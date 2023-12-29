@@ -1,0 +1,9 @@
+<div class="messages">
+    {{!-- {{> ListChat }} --}}
+<div class="link"><p class="link-name">Профиль</p> <span>&#62;</span></div>
+            {{> Field }}
+                {{!-- {{> ChatCard name="Игорь" time="10:50" message="Какой-то текст"}} --}}
+                               {{#each messages}}
+{{> ChatCard }}
+  {{/each}}
+</div>

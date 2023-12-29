@@ -1,0 +1,11 @@
+<div class="container">
+    {{#> Form }}
+    <h1 class="header">{{title}}</h1>
+    {{> Input label="Логин" type="text" errors="Неверный логин"}}
+    {{> Input label="Пароль" type="password"}}
+    <div class="footer">
+      {{> Button label="Авторизоваться" type="primary" page="list"}}
+      {{> Button label="Нет аккаунта?" type="link" }}
+    </div>
+    {{/Form}}
+</div>

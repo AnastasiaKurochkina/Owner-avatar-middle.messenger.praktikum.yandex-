@@ -1,0 +1,16 @@
+<div class="container">
+    {{#> Form }}
+    <h1 class="header">{{title}}</h1>
+    {{> Input label="Почта" type="text"}}
+    {{> Input label="Логин" type="text"}}
+    {{> Input label="Имя" type="text"}}
+    {{> Input label="Фамилия" type="text"}}
+    {{> Input label="Телефон" type="text"}}
+    {{> Input label="Пароль" type="password"}}
+    {{> Input label="Пароль (еще раз)" style="errors" type="password" errors="Пароли не совпадают"}}
+    <div class="footer">
+        {{> Button label="Зарегистрироваться" type="primary" page="list"}}
+        {{> Button label="Войти" type="link" }}
+    </div>
+    {{/Form}}
+</div>
