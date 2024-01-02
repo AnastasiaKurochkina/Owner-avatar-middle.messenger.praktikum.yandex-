@@ -1,11 +1,11 @@
 <div class="container">
     {{#> Form }}
     <h1 class="header">{{title}}</h1>
-    {{> Input label="Логин" type="text" errors="Неверный логин"}}
-    {{> Input label="Пароль" type="password"}}
+    {{> Input label="Логин" name="login" type="text" errors="Неверный логин"}}
+    {{> Input label="Пароль" name="password" type="password"}}
     <div class="footer">
-      {{> Button label="Авторизоваться" type="primary" page="list"}}
-      {{> Button label="Нет аккаунта?" type="link" }}
+      {{> Button label="Войти" type="primary" page="messages"}}
+      {{> Button label="Нет аккаунта?" type="link" page="signin" }}
     </div>
     {{/Form}}
  

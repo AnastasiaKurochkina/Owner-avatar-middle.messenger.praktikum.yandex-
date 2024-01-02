@@ -1,5 +1,5 @@
 <div class="profile">
-    <div class="comeback">
+    <div class="comeback" page="messages">
         <div class="comeback__arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
         </div>
     </div>
@@ -44,9 +44,9 @@
     {{/if}}
 
     <!-- Режим загрузки файла аватарки -->
-    {{#if FileDownload}}
+    {{!-- {{#if FileDownload}} --}}
     {{#> Modal title="Загрузите файл" text="Выбрать файл на компьютере"}}
     {{/Modal}}
-    {{/if}}
+    {{!-- {{/if}} --}}
 
 </div>
