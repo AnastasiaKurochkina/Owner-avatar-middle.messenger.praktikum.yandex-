@@ -1,0 +1,15 @@
+@import "src/style/colors.scss";
+
+.message-field {
+    border-radius: 30px;
+    background-color: $background;
+    border: none;
+    padding: 10px;
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    &:focus-visible {
+        outline: none;
+    }
+}
+

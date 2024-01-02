@@ -1,0 +1,63 @@
+.profile {
+    display: flex;
+    height: 100vh;
+    .comeback {
+        background-color: #FBFBFB;
+        display: flex;
+        align-items: center;
+        width: 64px;
+        justify-content: center;
+
+        &__arrow {
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #3369F3;
+            color: #ffff;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .user-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: 1; 
+        &__detail {
+            margin-bottom: 88px;
+            text-align: center;
+        }
+        &__avatar {
+            cursor: pointer;
+            width: 130px;
+            height: 130px;
+            margin-top: 20px;
+        }
+        &__name {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            margin-top: 10px;
+            margin-bottom: 40px; 
+        }
+    }
+
+    .profile-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 510px;
+        margin-top: 50px;
+
+        &__save {
+            width: 280px;
+        }
+    }
+
+
+}

@@ -1,23 +1,74 @@
-.messages {
+@import "src/style/colors.scss";
+
+.messages-container {
+  display: flex;
+
+  .list-messages {
     display: flex;
-    // justify-content: center;
-    // align-items: center;
     height: 100vh;
-    width: 100vw;
     flex-direction: column;
     align-items: flex-start;
     width: 310px;
+    min-width: 310px;
+    overflow-y: auto;
   }
+
   .link {
     color: #999999;
-    font-size: 14px;
-   display: flex;
-   justify-content: flex-end;
-   width: 100%;
-   padding: 10px 20px;
-   align-items: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 5px;
+    align-items: center;
+  }
 
-}
-.link-name {
-    margin-right: 10px;
+  .link-name {
+    margin-right: 5px;
+  }
+
+  .messages {
+    width: 100vw;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+
+    &__date {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 12px;
+      text-align: center;
+      color: #999999;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+
+    &__content {
+      flex: 1;
+      border-bottom: 1px solid $background;
+    }
+
+    &__send {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      position: sticky;
+      margin-bottom: 10px;
+    }
+
+    &__send-button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: $blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .fa-long-arrow-right {
+    color: #ffff;
+  }
 }

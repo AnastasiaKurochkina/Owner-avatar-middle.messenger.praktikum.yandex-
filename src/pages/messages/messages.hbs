@@ -1,9 +1,31 @@
-<div class="messages">
-    {{!-- {{> ListChat }} --}}
-<div class="link"><p class="link-name">Профиль</p> <span>&#62;</span></div>
-            {{> Field }}
-                {{!-- {{> ChatCard name="Игорь" time="10:50" message="Какой-то текст"}} --}}
-                               {{#each messages}}
-{{> ChatCard }}
-  {{/each}}
+<div class="messages-container">
+  <!-- Список чатов -->
+  <div class="list-messages">
+    <div class="link">
+      <p class="link-name">Профиль</p><i class="fa fa-angle-right" aria-hidden="true"></i>
+    </div>
+    {{> SearchField }}
+    {{#each messages.messages}}
+    {{> ChatCard }}
+    {{/each}}
+  </div>
+  <!-- Сам чат -->
+  <div class="messages">
+    {{> MessageHeader}}
+    <div class="messages__date">
+      19 июня
+    </div>
+    <div class="messages__content">
+      {{#each messages.message}}
+      {{> Message}}
+      {{/each}}
+    </div>
+    <div class="messages__send">
+      <img src="assets/clip.svg" alt="" />
+      {{> MessageField}}
+      <div class="messages__send-button">
+        <i class="fa fa-long-arrow-right arrow" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
 </div>
