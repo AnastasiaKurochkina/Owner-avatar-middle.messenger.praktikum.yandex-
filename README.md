@@ -1,5 +1,5 @@
 # Мессенджер 
-Домен: https://visionary-sorbet-61bfdf.netlify.app/
+Домен: 
 
 ## Описание проекта
 ***
@@ -18,7 +18,7 @@
 ***
 [Ссылка на макет Figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=1-616&mode=design&t=Wo5JemQpCEgbjnAd-0).
 
-## Комнады
+## Команды
 ***
 `npm i` - установка зависимостей
 
