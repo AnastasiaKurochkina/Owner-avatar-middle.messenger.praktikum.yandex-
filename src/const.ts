@@ -108,7 +108,7 @@ export const profile_props = [
   },
   {
     label: "Телефон",
-    value: "+7 (909) 967 30 30",
+    value: "89099673030",
     type: "text",
     name: "phone"
   },
