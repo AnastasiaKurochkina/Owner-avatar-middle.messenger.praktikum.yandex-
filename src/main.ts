@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
 
-import {messages_props, profile_props, profile_props_edit_password} from "./const.ts";
+import {messages_props, profile_props } from "./const.ts";
 
 const pages = {
   login: [Pages.LoginPage, { title: "Вход" }],
