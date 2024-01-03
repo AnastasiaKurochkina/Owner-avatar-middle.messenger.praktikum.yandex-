@@ -2,15 +2,15 @@ import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
 
-import {messages_props, profile_props } from "./const.ts";
+import { messages_props, profile_props } from "./const.ts";
 
 const pages = {
   login: [Pages.LoginPage, { title: "Вход" }],
   signin: [Pages.SigninPage, { title: "Регистрация" }],
   messages: [Pages.MessagePage, { messages: messages_props }],
-  profile: [Pages.ProfilePage, {profileInfo: profile_props}],
+  profile: [Pages.ProfilePage, { profileInfo: profile_props }],
   notFound: [Pages.NotFound],
-  serverError: [Pages.ServerError]
+  serverError: [Pages.ServerError],
 };
 
 Object.entries(Components).forEach(([name, component]) => {

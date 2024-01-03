@@ -1,29 +1,27 @@
 @import "src/style/colors.scss";
 .profile-button {
+  width: 100%;
+  li {
+    list-style-type: none;
+  }
+  ul {
+    padding: 0;
+  }
+  &__item {
     width: 100%;
-    li {
-        list-style-type: none;
-    }
-    ul {
-        padding: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid $background;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    cursor: pointer;
+  }
 
-    }
-    &__item {
-        width: 100%;
-        padding: 5px 0;
-        border-bottom: 1px solid $background;
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 13px;
-        cursor: pointer;
+  &__item-blue {
+    color: $blue;
+  }
 
-    }
-
-    &__item-blue {
-        color: $blue;
-    }
-
-    &__item-red {
-        color: $red;
-    }
+  &__item-red {
+    color: $red;
+  }
 }

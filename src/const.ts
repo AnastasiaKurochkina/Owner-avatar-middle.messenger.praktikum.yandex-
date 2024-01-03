@@ -80,37 +80,37 @@ export const profile_props = [
     label: "Почта",
     value: "pochta@yandex.ru",
     type: "text",
-    name: "email"
+    name: "email",
   },
   {
     label: "Логин",
     value: "pochta@yandex.ru",
     type: "text",
-    name: "login"
+    name: "login",
   },
   {
     label: "Имя",
     value: "Иван",
     type: "text",
-    name: "first_name"
+    name: "first_name",
   },
   {
     label: "Фамилия",
     value: "Иванов",
     type: "text",
-    name: "second_name"
+    name: "second_name",
   },
   {
     label: "Имя в чате",
     value: "ivanivanov",
     type: "text",
-    name: "display_name"
+    name: "display_name",
   },
   {
     label: "Телефон",
     value: "89099673030",
     type: "text",
-    name: "phone"
+    name: "phone",
   },
 ];
 
@@ -119,18 +119,18 @@ export const profile_props_edit_password = [
     label: "Старый пароль",
     value: "....",
     type: "password",
-    name: "oldPassword"
+    name: "oldPassword",
   },
   {
     label: "Новый пароль",
     value: "....",
     type: "password",
-    name: "newPassword"
+    name: "newPassword",
   },
   {
     label: "Повторите новый пароль",
     value: "....",
     type: "password",
-    name: "newPasswordRepeat"
+    name: "newPasswordRepeat",
   },
 ];
