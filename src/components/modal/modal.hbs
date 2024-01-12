@@ -1,0 +1,15 @@
+<div class="modal-wrapper">
+    <div class="modal">
+        <div class="modal__header">{{title}}</div>
+        <div class="modal__body">
+            <span class="input-file-container">{{text}}
+                 <input class="input-file" name="avatar"
+                 type="file" class="link" placeholder="Выбрать файл">
+                 </span>
+        </div>
+        <div class="modal__footer">
+            {{> Button label="Поменять" type="primary"}}
+            <span class="download-error">Нужно выбрать файл</span>
+        </div>
+    </div>
+</div>

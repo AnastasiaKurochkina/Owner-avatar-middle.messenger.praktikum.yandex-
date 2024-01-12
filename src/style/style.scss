@@ -1,0 +1,26 @@
+@import "/src/components/button/button.scss";
+@import "/src/components/input/input.scss";
+@import "/src/components/form/form.scss";
+@import "/src/components/search-field/search-field.scss";
+@import "/src/components/chat-card/chat-card.scss";
+@import "/src/components/message/message.scss";
+@import "/src/components/message-field/message-field.scss";
+@import "/src/components/profile-input/profile-input.scss";
+@import "/src/components/profile-button/profile-button.scss";
+@import "/src/components/modal/modal.scss";
+@import "/src/components/message-header/message-header.scss";
+@import "/src/pages/login/login.scss";
+@import "/src/pages/signin/signin.scss";
+@import "/src/pages/messages/messages.scss";
+@import "/src/pages/profile/profile.scss";
+@import "/src/pages/not-found/not-found.scss";
+@import "/src/pages/server-error/server-error.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  margin: 0;
+}

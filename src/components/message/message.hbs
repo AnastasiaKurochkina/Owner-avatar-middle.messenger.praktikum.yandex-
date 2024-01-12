@@ -1,0 +1,20 @@
+<div class="message-item message-item__{{type}}">
+  {{#if text}}
+    <div class="message-content message-content__{{type}}">
+      <p>{{text}}</p>
+      <div class="message-content__detail">
+        <span class="message-content__detail-time">{{time}}</span>
+        {{#if checked}}
+          <img src="assets/checked.svg" alt="Прочитано" />
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if img}}
+    <img
+      class="message-content message-content__img"
+      src="{{img}}"
+      alt="Прикрепленное изображение к сообщению"
+    />
+  {{/if}}
+</div>

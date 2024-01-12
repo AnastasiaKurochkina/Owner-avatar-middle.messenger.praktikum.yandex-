@@ -1,0 +1,58 @@
+<div class="profile">
+    <div class="comeback" page="messages">
+        <div class="comeback__arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        </div>
+    </div>
+    <!-- Режим просмотра профиля -->
+    {{!-- {{#if ViewMode}} --}}
+    <div class="user-info">
+        <div class="user-info__detail">
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
+            <div class="user-info__name">Иван</div>
+        </div>
+        <form>
+            {{#each profileInfo}}
+            {{>ProfileInput}}
+            {{/each}}
+        </form>
+        <div class="profile-button">{{>ProfileButton}}</div>
+    </div>
+    {{!-- {{/if}} --}}
+
+    <!--Режим редактирования профиля -->
+    {{#if EditingMode}}
+    <div class="user-info">
+        <div class="user-info__detail">
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
+        </div>
+        <form>
+            {{#each profileInfo}}
+            {{>ProfileInput}}
+            {{/each}}
+            <div class="profile-button profile-button__save"> {{> Button label="Сохранить" type="primary" }}</div>
+        </form>
+    </div>
+    {{/if}}
+
+    <!-- Режим редактирования пароля -->
+    {{#if EditingPassword}}
+    <div class="user-info">
+        <div class="user-info__detail">
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
+        </div>
+        <form>
+            {{#each profileInfoEditPassword}}
+            {{>ProfileInput}}
+            {{/each}}
+            <div class="profile-button profile-button__save"> {{> Button label="Сохранить" type="primary" }}</div>
+        </form>
+    </div>
+    {{/if}}
+
+    <!-- Режим загрузки файла аватарки -->
+    {{#if FileDownload}}
+    {{#> Modal title="Загрузите файл" text="Выбрать файл на компьютере"}}
+    {{/Modal}}
+    {{/if}}
+
+</div>
