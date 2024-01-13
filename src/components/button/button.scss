@@ -9,16 +9,16 @@
   padding: 12px 0;
   border-radius: 8px;
   cursor: pointer;
-}
 
-.button__primary {
-  background-color: $blue;
-  color: #fff;
-  font-size: 13px;
-}
+  &__primary {
+    background-color: $blue;
+    color: #fff;
+    font-size: 13px;
+  }
 
-.button__link {
-  color: $blue;
-  font-size: 11px;
-  text-align: center;
+  &__link {
+    color: $blue;
+    font-size: 11px;
+    text-align: center;
+  }
 }

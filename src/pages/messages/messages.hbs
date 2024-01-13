@@ -10,6 +10,7 @@
     {{/each}}
   </div>
   <!-- Сам чат -->
+  {{!-- {{#if activeChat}} --}}
   <div class="messages">
     {{> MessageHeader}}
     <div class="messages__date">
@@ -21,11 +22,39 @@
       {{/each}}
     </div>
     <div class="messages__send">
-      <img src="assets/clip.svg" alt="Прикрепить" />
+      <img src="assets/clip.svg" alt="Прикрепить" class="clip" />
+      {{!-- {{#if TooltipClipActive}} --}}
+      {{#> Tooltip style="bottom:70px; left:0" }}
+      <div class="tooltip-option">
+        <img src="assets/picture.svg" alt="picture" />
+        <span class="option-name">Фото или видео</span>
+      </div>
+      <div class="tooltip-option">
+        <img src="assets/file.svg" alt="file" />
+        <span class="option-name">Файл</span>
+      </div>
+      <div class="tooltip-option">
+        <img src="assets/location.svg" alt="location" />
+        <span class="option-name">Локация</span>
+      </div>
+      {{/Tooltip}}
+      {{!-- {{/if}} --}}
       {{> MessageField}}
       <div class="messages__send-button">
         <i class="fa fa-long-arrow-right arrow" aria-hidden="true"></i>
       </div>
     </div>
   </div>
+  {{!-- {{else}} --}}
+  {{!-- <div class="prompt">
+    <span>Выберите чат чтобы отправить сообщение</span>
+  </div> --}}
+  {{!-- {{/if}} --}}
+  {{#if ModalAddUser}}
+  {{#> Modal modal-header="Добавить пользователя" }}
+  {{>Input label="Логин" type="text" name="login-modal"}}
+  {{>Button label="Добавить" type="primary"}}
+
+  {{/Modal}}
+  {{/if}}
 </div>

@@ -8,6 +8,7 @@
 @import "/src/components/profile-input/profile-input.scss";
 @import "/src/components/profile-button/profile-button.scss";
 @import "/src/components/modal/modal.scss";
+@import "/src/components/tooltip/tooltip.scss";
 @import "/src/components/message-header/message-header.scss";
 @import "/src/pages/login/login.scss";
 @import "/src/pages/signin/signin.scss";
@@ -18,7 +19,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Inter";
+  font-family: Inter, sans-serif;
 }
 
 body {

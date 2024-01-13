@@ -1,6 +1,7 @@
 .profile {
   display: flex;
   height: 100vh;
+
   .comeback {
     background-color: #fbfbfb;
     display: flex;
@@ -27,16 +28,19 @@
     align-items: center;
     flex-direction: column;
     flex: 1;
+
     &__detail {
       margin-bottom: 88px;
       text-align: center;
     }
+
     &__avatar {
       cursor: pointer;
       width: 130px;
       height: 130px;
       margin-top: 20px;
     }
+
     &__name {
       font-size: 16px;
       font-weight: 600;
@@ -57,5 +61,33 @@
     &__save {
       width: 280px;
     }
+  }
+
+  .input-file-container {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: $blue;
+    text-decoration: underline;
+    text-align: center;
+    max-width: 122px;
+  }
+
+  .input-file {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+  }
+
+  .download-error {
+    color: $red;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 11px;
   }
 }

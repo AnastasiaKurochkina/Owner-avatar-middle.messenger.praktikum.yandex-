@@ -1,1 +1,1 @@
-export { default as MessageField } from "./message-field.hbs?raw";
+export { default as MessageField } from './message-field.hbs?raw';

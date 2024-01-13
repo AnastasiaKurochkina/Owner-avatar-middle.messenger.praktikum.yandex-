@@ -14,7 +14,7 @@
   }
 
   .link {
-    color: #999999;
+    color: #999;
     font-size: 12px;
     display: flex;
     justify-content: flex-end;
@@ -33,13 +33,16 @@
     padding: 0 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+    height: 100vh;
 
     &__date {
       font-size: 12px;
       font-weight: 500;
       line-height: 12px;
       text-align: center;
-      color: #999999;
+      color: #999;
       margin-top: 60px;
       margin-bottom: 30px;
     }
@@ -53,9 +56,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 10px;
       position: sticky;
-      margin-bottom: 10px;
+      padding: 11px;
+      background-color: white;
+      bottom: 0;
     }
 
     &__send-button {
@@ -71,5 +75,32 @@
 
   .fa-long-arrow-right {
     color: #ffff;
+  }
+
+  .clip {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    & > span {
+      font-weight: 500;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+
+  .tooltip-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    white-space: nowrap;
   }
 }

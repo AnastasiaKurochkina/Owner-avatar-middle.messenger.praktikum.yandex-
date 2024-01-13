@@ -1,1 +1,1 @@
-export { default as MessageHeader } from "./message-header.hbs?raw";
+export { default as MessageHeader } from './message-header.hbs?raw';

@@ -51,7 +51,12 @@
 
     <!-- Режим загрузки файла аватарки -->
     {{#if FileDownload}}
-    {{#> Modal title="Загрузите файл" text="Выбрать файл на компьютере"}}
+    {{#> Modal modal-header="Загрузите файл"}}
+    <span class="input-file-container">Выбрать файл на компьютере
+        <input class="input-file" name="avatar" type="file" placeholder="Выбрать файл">
+    </span>
+    {{> Button label="Поменять" type="primary"}}
+    <span class="download-error">Нужно выбрать файл</span>
     {{/Modal}}
     {{/if}}
 
