@@ -40,7 +40,7 @@ export class ProfileInput extends Block<IProfileInputProps, Ref> {
 
   protected render(): string {
     const {
-      name, label, type, value,
+      name, label,
     } = this.props;
     return ` 
     <div>
