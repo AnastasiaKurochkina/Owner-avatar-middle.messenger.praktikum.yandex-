@@ -1,9 +1,21 @@
 <div class="messages-header">
-    <div class="user-info">
-        <div class="user-info__avatar"></div>
-        <span class="user-info__name">Вадим</span>
+  <div class="user-info">
+    <div class="user-info__avatar"></div>
+    <span class="user-info__name">Вадим</span>
+  </div>
+  <div class="navigation">
+    <i class="fa fa-list-ul" aria-hidden="true"></i>
+    {{#> Tooltip style="top:20px; right:0"}}
+    <div class="tooltip-option">
+      <img src="assets/plus.jpg" alt="plus" />
+      <span class="option-name">Добавить пользователя</span>
     </div>
-    <div class="navigation">
-        <i class="fa fa-list-ul" aria-hidden="true"></i>
+    <div class="tooltip-option">
+      <img src="assets/minus.jpg" alt="minus" />
+      <span class="option-name">Удалить пользователя</span>
     </div>
+
+    {{/Tooltip}}
+  </div>
+
 </div>

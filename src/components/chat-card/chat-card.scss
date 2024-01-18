@@ -2,11 +2,16 @@
   width: 100%;
   height: 75px;
 
+  &:hover {
+    cursor: pointer;
+    background-color: #e4edfd;
+  }
+
   &__item {
     padding: 10px;
     display: flex;
     align-items: center;
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid #eaeaea;
   }
 }
 
@@ -41,7 +46,7 @@
     font-size: 9px;
     font-weight: 500;
     line-height: 13px;
-    color: #999999;
+    color: #999;
   }
 }
 
@@ -53,7 +58,7 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
-    color: #999999;
+    color: #999;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -63,7 +68,7 @@
 
   &__message-your {
     font-weight: 600;
-    color: #1E1E1E;
+    color: #1e1e1e;
   }
 
   &__message-count {
@@ -71,14 +76,13 @@
     height: 20px;
     color: #ffff;
     border-radius: 50%;
-    background-color: #3369F3;
+    background-color: #3369f3;
     font-size: 11px;
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: flex-end;
   }
-
 }
 
 p {

@@ -1,2 +1,1 @@
-export { default as SearchField } from './search-field.hbs?raw';
-
+export { SearchField } from './search-field';

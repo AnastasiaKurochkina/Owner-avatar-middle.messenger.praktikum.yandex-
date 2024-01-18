@@ -4,48 +4,78 @@
         </div>
     </div>
     <!-- Режим просмотра профиля -->
-    {{!-- {{#if ViewMode}} --}}
+    {{#if ViewMode}}
     <div class="user-info">
         <div class="user-info__detail">
-            <img class="user-info__avatar" src="assets/avatar.jpg" alt="" />
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
             <div class="user-info__name">Иван</div>
         </div>
-        {{#each profileInfo}}
-        {{>ProfileInput}}
-        {{/each}}
-        <div class="profile-button">{{>ProfileButton}}</div>
-    </div>
-    {{!-- {{/if}} --}}
-
-    <!--Режим редактирования профиля -->
-    {{#if EditingMode}}
-    <div class="user-info">
-        <div class="user-info__detail">
-            <img class="user-info__avatar" src="assets/avatar.jpg" alt="" />
-        </div>
-        {{#each profileInfo}}
-        {{>ProfileInput}}
-        {{/each}}
-        <div class="profile-button profile-button__save"> {{> Button label="Сохранить" type="primary" }}</div>
+        <form>
+            {{#each userInfo}}
+            {{{ ProfileInput name=this.name type=this.type label=this.label value=this.value}}}
+            {{/each}}
+        </form>
+        <div class="profile-button">{{{ProfileButton}}}</div>
     </div>
     {{/if}}
+
+    <!--Режим редактирования профиля -->
+    {{!-- {{#if EditingMode}} --}}
+    <div class="user-info">
+        <div class="user-info__detail">
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
+        </div>
+        <form class="user-info__form">
+            {{!-- {{#each userInfo}}
+            {{{ProfileInput name=this.name type=this.type label=this.label value=this.value ref=this.name }}}
+            {{/each}} --}}
+            {{{ ProfileInput name="email" type="text" label="Почта" value="pochta@yandex.ru" ref="email"
+            validate=validate.email}}}
+            {{{ ProfileInput name="login" type="text" label="Логин" value="login" ref="login"
+            validate=validate.login}}}
+            {{{ ProfileInput name="first_name" type="text" label="Имя" value="Иван" ref="first_name"
+            validate=validate.name disabled="true"}}}
+            {{{ ProfileInput name="second_name" type="text" label="Фамилия" value="Иванов" ref="second_name"
+            validate=validate.name }}}
+            {{{ ProfileInput name="display_name" type="text" label="Имя в чате" value="Ivanivanov" ref="display_name"
+            validate=validate.name }}}
+            {{{ ProfileInput name="phone" type="text" label="Телефон" value="89099673030" ref="phone"
+            validate=validate.phone }}}
+            <div class="profile-button profile-button__save"> {{{ Button label="Сохранить" type="primary"
+                onClick=onSaveProfile}}}</div>
+        </form>
+    </div>
+    {{!-- {{/if}} --}}
 
     <!-- Режим редактирования пароля -->
     {{#if EditingPassword}}
     <div class="user-info">
         <div class="user-info__detail">
-            <img class="user-info__avatar" src="assets/avatar.jpg" alt="" />
+            <img class="user-info__avatar" src="assets/avatar.jpg" alt="avatar" />
         </div>
-        {{#each profileInfoEditPassword}}
-        {{>ProfileInput}}
-        {{/each}}
-        <div class="profile-button profile-button__save"> {{> Button label="Сохранить" type="primary" }}</div>
+        <form>
+            {{!-- {{#each editPassword}} --}}
+            {{{ProfileInput name="oldPassword" type="password" label="Старый пароль" value="старый пароль"
+            ref="oldPassword" validate=validate.password}}}
+            {{{ProfileInput name="newPassword" type="password" label="Новый пароль" value="новый пароль"
+            ref="newPassword" validate=validate.password}}}
+            {{{ProfileInput name="newPasswordRepeat" type="password" label="Повторите новый пароль"
+            value="newPasswordRepeat" ref=this.name validate=validate.password}}}
+            {{!-- {{/each}} --}}
+            <div class="profile-button profile-button__save"> {{{ Button label="Сохранить" type="primary"
+                onClick=onSavePassword}}}</div>
+        </form>
     </div>
     {{/if}}
 
     <!-- Режим загрузки файла аватарки -->
     {{#if FileDownload}}
-    {{#> Modal title="Загрузите файл" text="Выбрать файл на компьютере"}}
+    {{#> Modal modal-header="Загрузите файл"}}
+    <span class="input-file-container">Выбрать файл на компьютере
+        <input class="input-file" name="avatar" type="file" placeholder="Выбрать файл">
+    </span>
+    {{{ Button label="Поменять" type="primary"}}}
+    <span class="download-error">Нужно выбрать файл</span>
     {{/Modal}}
     {{/if}}
 

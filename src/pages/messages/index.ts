@@ -1,2 +1,1 @@
-export { default as MessagePage } from './messages.hbs?raw';
-
+export { MessagesPage as default } from './messages';

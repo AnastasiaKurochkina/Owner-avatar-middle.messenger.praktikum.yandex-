@@ -1,0 +1,10 @@
+.pages-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > button {
+        width: 30%;
+       margin-top: 15px;
+    }
+}
