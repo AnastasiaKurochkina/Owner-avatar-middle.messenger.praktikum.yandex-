@@ -48,6 +48,12 @@
       margin-top: 10px;
       margin-bottom: 40px;
     }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .profile-button {

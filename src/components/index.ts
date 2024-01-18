@@ -1,4 +1,5 @@
 export { Button } from './button';
+export { InputField } from './input-field';
 export { Input } from './input';
 export { Form } from './form';
 export { SearchField } from './search-field';
@@ -8,5 +9,7 @@ export { MessageField } from './message-field';
 export { ProfileInput } from './profile-input';
 export { ProfileButton } from './profile-button';
 export { MessageHeader } from './message-header';
+export { ErrorLine } from './error-line';
+export { MessageSend } from './message-send';
 export { Tooltip } from './tooltip';
 export { Modal } from './modal';

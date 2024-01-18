@@ -1,4 +1,18 @@
-export const messagesProps = {
+export const messagesProps: {
+  messages: {
+    name: string,
+    message: string,
+    time: string,
+    isYourMessage?: boolean, count?: number
+  }[],
+  message: {
+    text?: string,
+    type: 'outcoming' | 'incoming',
+    time: string,
+    checked?: boolean,
+    img?: string
+  }[]
+} = {
   messages: [
     {
       name: 'Андрей',
@@ -75,7 +89,12 @@ export const messagesProps = {
   ],
 };
 
-export const profileProps = [
+export const profileProps: {
+  label: string,
+  value: string,
+  type: string,
+  name: string,
+}[] = [
   {
     label: 'Почта',
     value: 'pochta@yandex.ru',
@@ -114,22 +133,27 @@ export const profileProps = [
   },
 ];
 
-export const profilePropsEditPassword = [
+export const profilePropsEditPassword: {
+  label: string,
+  value: string,
+  type: string,
+  name: string,
+}[] = [
   {
     label: 'Старый пароль',
-    value: '....',
+    value: 'старый пароль',
     type: 'password',
     name: 'oldPassword',
   },
   {
     label: 'Новый пароль',
-    value: '....',
+    value: 'новый пароль',
     type: 'password',
     name: 'newPassword',
   },
   {
     label: 'Повторите новый пароль',
-    value: '....',
+    value: 'новый пароль',
     type: 'password',
     name: 'newPasswordRepeat',
   },
