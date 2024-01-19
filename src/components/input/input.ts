@@ -3,7 +3,7 @@ import Block from '../../core/Block';
 interface IInputProps {
   name: string;
   type: string;
-  value?: string | undefined,
+  value?: string,
   className: string,
   placeholder: string,
   onBlur?: () => void,
