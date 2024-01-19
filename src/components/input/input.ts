@@ -7,7 +7,8 @@ interface IInputProps {
   className: string,
   placeholder: string,
   onBlur?: () => void,
-  events?: {blur: (() => void) | undefined}
+  events?: {blur: (() => void) | undefined},
+  error?: string | undefined
 }
 
 export class Input extends Block<IInputProps> {
