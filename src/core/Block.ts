@@ -197,21 +197,21 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
       get(target, prop) {
-        const value = target[prop];
+        const value = target[prop as keyof Props];
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = { ...target };
 
         // eslint-disable-next-line no-param-reassign
-        target[prop] = value;
+        target[prop as keyof Props] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
