@@ -7,7 +7,7 @@ interface IProfileInputProps {
   label: string;
   value: string;
   type: string;
-  validate?: (value: string) => boolean | string;
+  validate?: (value: string) => string;
   onBlur?: () => void;
 }
 type Ref = {
