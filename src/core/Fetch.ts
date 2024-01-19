@@ -21,14 +21,16 @@ interface IOptions {
   method?: string
 }
 
+type HTTPMethod = (url: string, options?: IOptions) => Promise<unknown>;
+
 class HTTPTransport {
-  get = (url: string, options:IOptions = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+  get: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
 
-  post = (url: string, options: IOptions = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+  post: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-  put = (url: string, options: IOptions = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+  put: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-  delete = (url: string, options: IOptions = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+  delete: HTTPMethod = (url, options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url: string, options: IOptions = {}, timeout = 5000) => {
     const { headers = {}, method, data } = options;

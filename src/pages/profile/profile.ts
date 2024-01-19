@@ -5,6 +5,21 @@ import { navigate } from '../../core/navigate';
 import { ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
 
+export interface ProfileInfo {
+  login: string;
+  email: string;
+  firstName: string;
+  secondName: string;
+  displayName: string;
+  phone: string;
+}
+
+export interface ProfilePassword {
+  oldPassword: string;
+  newPassword: string;
+  newPasswordRepeat: string;
+}
+
 interface IProfileProps {
   userInfo: {
     label: string;
@@ -51,51 +66,22 @@ export class Profile extends Block<IProfileProps, Ref> {
         const secondName = this.refs.second_name?.value();
         const displayName = this.refs.display_name?.value();
         const phone = this.refs.phone?.value();
-        if (login) {
-          const errorLogin = validators.login(login);
-          if (errorLogin) {
-            return;
-          }
+        if (!email || !login || !firstName || !secondName || !displayName || !phone) {
+          return;
         }
-        if (email) {
-          const errorEmail = validators.email(email);
-          if (errorEmail) {
-            return;
-          }
-        }
-        if (firstName) {
-          const errorFirstName = validators.name(firstName);
-          if (errorFirstName) {
-            return;
-          }
-        }
-        if (secondName) {
-          const errorSecondName = validators.name(secondName);
-          if (errorSecondName) {
-            return;
-          }
-        }
-        if (displayName) {
-          const errorDisplayName = validators.name(displayName);
-          if (errorDisplayName) {
-            return;
-          }
-        }
-
-        if (phone) {
-          const errorPhone = validators.phone(phone);
-          if (errorPhone) {
-            return;
-          }
-        }
-
-        console.log({
-          email,
+        const data: ProfileInfo = {
           login,
+          email,
           firstName,
           secondName,
           displayName,
           phone,
+        };
+        if (!validators.validProfileForm(data)) {
+          return;
+        }
+        console.log({
+          data,
         });
         navigate('messages');
       },
@@ -104,23 +90,16 @@ export class Profile extends Block<IProfileProps, Ref> {
         const oldPassword = this.refs.oldPassword?.value();
         const newPassword = this.refs.newPassword?.value();
         const newPasswordRepeat = this.refs.newPasswordRepeat?.value();
-        if (oldPassword) {
-          const errorOldPassword = validators.password(oldPassword);
-          if (errorOldPassword) {
-            return;
-          }
+        if (!oldPassword || !newPassword || !newPasswordRepeat) {
+          return;
         }
-        if (newPassword) {
-          const errorNewPassword = validators.password(newPassword);
-          if (errorNewPassword) {
-            return;
-          }
-        }
-        if (newPasswordRepeat) {
-          const errorNewPasswordRepeat = validators.phone(newPasswordRepeat);
-          if (errorNewPasswordRepeat) {
-            return;
-          }
+        const data: ProfilePassword = {
+          oldPassword,
+          newPassword,
+          newPasswordRepeat,
+        };
+        if (!validators.validProfilePasswors(data)) {
+          return;
         }
         console.log({
           oldPassword,
