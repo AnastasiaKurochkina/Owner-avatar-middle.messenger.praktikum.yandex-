@@ -126,7 +126,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   componentWillUnmount() {}
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return;
     }
