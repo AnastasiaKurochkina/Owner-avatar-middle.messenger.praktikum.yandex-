@@ -1,1 +1,3 @@
-export { MessagesPage as default } from './messages';
+import MessagePages from './messages';
+
+export default MessagePages;

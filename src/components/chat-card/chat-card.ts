@@ -1,4 +1,5 @@
 import Block from '../../core/Block';
+import { connect } from '../../utils/connect';
 import template from './chat-card.hbs?raw';
 
 interface IChatCardProps {
@@ -18,3 +19,5 @@ export class ChatCard extends Block<IChatCardProps> {
     return template;
   }
 }
+
+export default connect(({ chats, user }) => ({ chats, user }))(ChatCard);

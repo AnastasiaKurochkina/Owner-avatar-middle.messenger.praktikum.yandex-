@@ -1,6 +1,8 @@
-import { InputField } from '../../components';
+import { CreateUser } from '../../api/type';
+import { ErrorLine, InputField } from '../../components';
 import Block from '../../core/Block';
 import { navigate } from '../../core/navigate';
+import { signup } from '../../services/auth';
 import * as validators from '../../utils/validator';
 
 type Ref = {
@@ -11,6 +13,7 @@ type Ref = {
   phone: InputField,
   password: InputField,
   password_repeat: InputField,
+  errorLine: ErrorLine
 };
 type TSigninPage = {};
 
@@ -52,12 +55,33 @@ export class SigninPage extends Block<TSigninPage, Ref> {
           password,
           passwordRepeat,
         });
-        navigate('messages');
+        const newUser: CreateUser = {
+          login: this.refs.login.value()!,
+          first_name: this.refs.first_name.value()!,
+          second_name: this.refs.second_name.value()!,
+          email: this.refs.email.value()!,
+          phone: this.refs.phone.value()!,
+          password: this.refs.password.value()!,
+        };
+        signup(newUser).catch((error) => this.refs.errorLine.setProps({ error }));
+        // navigate('messages');
       },
       onGoLogin: (event: Event) => {
         event.preventDefault();
         navigate('login');
       },
+      //   onRegistration: () => {
+      //     const newUser: CreateUser = {
+      //         login: this.refs.login.value()!,
+      //         first_name: this.refs.first_name.value()!,
+      //         second_name: this.refs.second_name.value()!,
+      //         email: this.refs.email.value()!,
+      //         phone: this.refs.phone.value()!,
+      //         password: this.refs.password.value()!,
+      //     };
+
+    //     signup(newUser).catch(error => this.refs.errorLine.setProps({error}))
+    // }
     });
   }
 

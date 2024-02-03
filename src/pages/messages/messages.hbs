@@ -1,12 +1,18 @@
 <div class="messages-container">
   <!-- Список чатов -->
   <div class="list-messages">
-    <div class="link">
-      <p class="link-name" page="profile">Профиль</p><i class="fa fa-angle-right" aria-hidden="true"></i>
+    <div class="link-container">
+      <div>
+      {{{Button type="link" label="создать переписку" onClick=openDialog}}}
+      </div>
+      <div>
+        <span class="link-name" page="profile">Профиль</span><i class="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
     </div>
+    {{{ DialogCreateChat onSave=onSave onClose=closeDialog ref="createChat"}}}
     {{{ SearchField }}}
-    {{#each chatList}}
-    {{{ ChatCard name=this.name time=this.time message=this.message count=this.count }}}
+    {{#each chats}}
+    {{{ ChatCard name=this.title time=this.time message=this.message count=this.unread_count }}}
     {{/each}}
   </div>
   <!-- Сам чат -->

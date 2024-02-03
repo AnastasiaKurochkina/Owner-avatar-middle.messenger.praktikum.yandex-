@@ -13,3 +13,4 @@ export { ErrorLine } from './error-line';
 export { MessageSend } from './message-send';
 export { Tooltip } from './tooltip';
 export { Modal } from './modal';
+export { default as DialogCreateChat } from './dialog-create-chat';
