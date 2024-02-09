@@ -9,11 +9,10 @@ export function connect(mapStateToProps: (state: AppState) => Partial<AppState>)
       private onChangeStoreCallback: () => void;
 
       constructor(props: P) {
+        // eslint-disable-next-line prefer-destructuring
         const store = window.store;
         // сохраняем начальное состояние
         let state = mapStateToProps(store.getState());
-        console.log('state',state)
-
         super({ ...props, ...state });
 
         this.onChangeStoreCallback = () => {
@@ -22,7 +21,7 @@ export function connect(mapStateToProps: (state: AppState) => Partial<AppState>)
 
           // если что-то из используемых данных поменялось, обновляем компонент
           if (!isEqual(state, newState)) {
-            this.setProps({ ...newState });
+            this.setProps({ ...newState } as P);
           }
 
           // не забываем сохранить новое состояние

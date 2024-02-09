@@ -44,6 +44,7 @@ export class MessageField extends Block<IMessageFieldProps, Ref> {
             ref="input"
             placeholder="Сообщение"
             onBlur=onBlur
+            id="message-field"
         }}}
         {{{ErrorLine error=error ref="errorLine"}}}
     </div>

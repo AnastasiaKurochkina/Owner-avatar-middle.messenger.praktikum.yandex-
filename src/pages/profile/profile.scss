@@ -2,26 +2,6 @@
   display: flex;
   height: 100vh;
 
-  .comeback {
-    background-color: #fbfbfb;
-    display: flex;
-    align-items: center;
-    width: 64px;
-    justify-content: center;
-
-    &__arrow {
-      cursor: pointer;
-      border-radius: 50%;
-      background-color: #3369f3;
-      color: #ffff;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
   .user-info {
     display: flex;
     justify-content: center;
@@ -32,13 +12,6 @@
     &__detail {
       margin-bottom: 88px;
       text-align: center;
-    }
-
-    &__avatar {
-      cursor: pointer;
-      width: 130px;
-      height: 130px;
-      margin-top: 20px;
     }
 
     &__name {
@@ -77,17 +50,9 @@
     color: $blue;
     text-decoration: underline;
     text-align: center;
-    max-width: 122px;
-  }
-
-  .input-file {
-    position: absolute;
-    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    left: 0;
-    top: 0;
   }
 
   .download-error {

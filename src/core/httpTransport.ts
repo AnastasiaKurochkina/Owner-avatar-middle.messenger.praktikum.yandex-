@@ -26,8 +26,6 @@ interface IOptions {
   method?: string;
 }
 
-// type HTTPMethod = (url: string, options?: IOptions) => Promise<unknown>;
-
 
 export class HTTPTransport {
   protected apiUrl = 'https://ya-praktikum.tech/api/v2';
@@ -47,6 +45,20 @@ export class HTTPTransport {
     return this.request<TResponse>(`${this.apiUrl}${url}`, {
       ...options,
       method: METHOD.POST,
+    });
+  }
+
+  put<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
+    return this.request<TResponse>(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHOD.PUT,
+    });
+  }
+
+  delete<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
+    return this.request<TResponse>(`${this.apiUrl}${url}`, {
+      ...options,
+      method: METHOD.DELETE,
     });
   }
 
@@ -75,8 +87,14 @@ export class HTTPTransport {
       });
 
       xhr.onload = function () {
-        resolve(JSON.parse(xhr.response));
+        if (xhr.response === "OK") {
+          resolve(xhr.response);
+        } else {
+          resolve(JSON.parse(xhr.response));
+        }
       };
+      // не совсем уверена, что правильно написала конструкцию resolve и что тут нужно использовать parse,
+      // но в сервисе не получилось, ругается на типизацию, можете подсказать, пожалуйста?
 
       xhr.onabort = reject;
       xhr.onerror = reject;

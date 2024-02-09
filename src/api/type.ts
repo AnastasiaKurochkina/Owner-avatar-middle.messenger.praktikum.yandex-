@@ -1,3 +1,5 @@
+import { User } from "../type";
+
 export type APIError = {
     reason: string;
 };
@@ -6,18 +8,8 @@ export type SignUpResponse = {
     id: number
 }
 
-export type UserDTO = {
-    id: number;
-    login: string;
-    first_name: string;
-    second_name: string;
-    display_name: string;
-    avatar: string;
-    phone: string;
-    email: string;
-};
 
-export type CreateUser = Omit<UserDTO, 'avatar' | 'display_name' | 'id'> & {
+export type CreateUser = Omit<User, 'avatar' | 'display_name' | 'id'> & {
     password: string
 }
 
@@ -30,16 +22,12 @@ export type LoginRequestData = {
     password: string
 }
 
-type LastMessage = {
-    user: UserDTO,
-    time: string,
-    content: string
+export type ChangeUser = {
+  users: number[],
+  chatId: number
 }
 
-export type ChatDTO = {
-    id: number,
-    title: string,
-    avatar: string | null,
-    unread_count: number,
-    last_message: LastMessage | null
+export type ChatToken ={
+  token: string;
 }
+

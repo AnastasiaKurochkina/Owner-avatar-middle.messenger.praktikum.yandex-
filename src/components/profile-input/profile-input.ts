@@ -7,6 +7,7 @@ interface IProfileInputProps {
   label: string;
   value: string;
   type: string;
+  disabled?: boolean
   validate?: (value: string) => string;
   onBlur?: () => void;
 }
@@ -53,6 +54,7 @@ export class ProfileInput extends Block<IProfileInputProps, Ref> {
           value=value
           ref="input"
           onBlur=onBlur
+          disabled=disabled
         }}}
       </div>
     {{{ErrorLine error=error ref="errorLine"}}}

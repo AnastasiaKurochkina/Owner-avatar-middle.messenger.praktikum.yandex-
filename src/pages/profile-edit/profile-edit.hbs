@@ -1,0 +1,29 @@
+<div class="profile">
+    {{{ButtonComeback onClick=onGoProfile}}}
+
+    <!--Режим редактирования профиля -->
+    <div class="user-info">
+        <div class="user-info__detail">
+            {{{UserAvatar img=user.avatar}}}
+        </div>
+        <form class="user-info__form">
+            {{{ ProfileInput name="email" type="text" label="Почта" value=user.email ref="email"
+            validate=validate.email}}}
+            {{{ ProfileInput name="login" type="text" label="Логин" value=user.login ref="login"
+            validate=validate.login}}}
+            {{{ ProfileInput name="first_name" type="text" label="Имя" value=user.first_name ref="first_name"
+            validate=validate.name}}}
+            {{{ ProfileInput name="second_name" type="text" label="Фамилия" value=user.second_name ref="second_name"
+            validate=validate.name}}}
+            {{{ ProfileInput name="display_name" type="text" label="Имя в чате" value=user.display_name
+            ref="display_name" validate=validate.name}}}
+            {{{ ProfileInput name="phone" type="text" label="Телефон" value=user.phone ref="phone"
+            validate=validate.phone}}}
+
+            <div class="profile-button profile-button__save"> {{{ Button label="Сохранить" type="primary"
+                onClick=onSaveProfile}}}
+            </div>
+        </form>
+    </div>
+
+</div>

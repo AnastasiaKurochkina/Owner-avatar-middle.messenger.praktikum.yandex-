@@ -2,18 +2,43 @@ export type AppState = {
     error: string | null,
     user: User | null,
     isOpenDialogChat: boolean,
-    chats: Chat[]
+    chats: Chat[],
+    currentChat: ActiveChat | null,
+    isOpenAddUser: boolean,
+    isModalAddUser: boolean,
+    isModalDeleteUser: boolean,
+    messages: Message[],
+}
+export type ActiveChat = {
+  id: number,
+  name: string
+}
+
+export type Message = {
+    chat_id: number,
+    content: string,
+    file: null,
+    id: number,
+    is_read: boolean,
+    time: string,
+    type: string,
+    user_id: number
 }
 
 export type User = {
     id: number;
     login: string;
-    firstName: string;
-    secondName: string;
-    displayName: string;
+    first_name: string;
+    second_name: string;
+    display_name: string;
     avatar: string;
     phone: string;
     email: string;
+};
+
+export type Password = {
+  oldPassword: string;
+  newPassword: string;
 };
 
 type LastMessage = {
@@ -26,6 +51,6 @@ export type Chat = {
     id: number,
     title: string,
     avatar: Nullable<string>,
-    unreadCount: number,
-    lastMessage: LastMessage | null
+    unread_сount: number,
+    last_message: LastMessage | null
 }

@@ -1,21 +1,26 @@
-import { InputField } from '../../components';
+import { ErrorLine, InputField } from '../../components';
 import Block from '../../core/Block';
-import { navigate } from '../../core/navigate';
+import Router, { PAGES } from '../../core/Router';
+// import { navigate } from '../../core/navigate';
+import { signin } from '../../services/auth';
 import * as validators from '../../utils/validator';
 
 type Ref = {
   login: InputField;
   password: InputField;
+  error: ErrorLine
 };
 interface ILoginPageProps {
   validate: { [key: string]: Function };
   onLogin: (event: Event) => void;
   onAuth: (event: Event) => void;
+  error: string | null
 }
 
 export class LoginPage extends Block<ILoginPageProps, Ref> {
   constructor() {
     super({
+      error: null,
       validate: {
         login: validators.login,
         password: validators.password,
@@ -34,11 +39,14 @@ export class LoginPage extends Block<ILoginPageProps, Ref> {
           login,
           password,
         });
-        navigate('messages');
+        signin({
+          login,
+          password
+      }).catch((error) => this.refs.error.setProps({error}))
       },
       onAuth: (event: Event) => {
         event.preventDefault();
-        navigate('signin');
+        Router.go(PAGES.signin)
       },
     });
   }
@@ -53,6 +61,7 @@ export class LoginPage extends Block<ILoginPageProps, Ref> {
         {{{ Button label="Войти" type="primary" page="messages" onClick=onLogin }}}
         {{{ Button label="Нет аккаунта?" type="link" page="signin" onClick=onAuth}}}
       </div>
+      {{{ ErrorLine error=error ref="error"}}}
       {{/Form}}
    
   </div>`;

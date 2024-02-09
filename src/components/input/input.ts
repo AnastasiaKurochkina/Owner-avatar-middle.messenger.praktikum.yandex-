@@ -6,9 +6,12 @@ interface IInputProps {
   value?: string,
   className: string,
   placeholder: string,
+  disabled?: boolean,
   onBlur?: () => void,
-  events?: {blur: (() => void) | undefined},
-  error?: string | undefined
+  onChange?: () => void,
+  events?: {blur: (() => void) | undefined, change: (() => void) | undefined},
+  error?: string | undefined,
+  id: string
 }
 
 export class Input extends Block<IInputProps> {
@@ -17,13 +20,14 @@ export class Input extends Block<IInputProps> {
       ...props,
       events: {
         blur: props.onBlur,
+        change: props.onChange
       },
     });
   }
 
   protected render(): string {
     const {
-      name, type, value, className, placeholder,
+      name, type, value, className, placeholder, disabled, id
     } = this.props;
     return `
         <input
@@ -33,6 +37,8 @@ export class Input extends Block<IInputProps> {
         name=${name}
         type=${type}
         ${value ? `value="${value}"` : ''}
+        ${disabled ? 'disabled' : ''}
+        ${id ? `id=${id}` : ''}
       />
         `;
   }

@@ -1,75 +1,74 @@
 import Block from "../../core/Block";
 import template from "./messages.hbs?raw";
-import { messagesProps } from "../../const";
 import * as validators from "../../utils/validator";
-import { MessageField } from "../../components";
-import { Chat } from "../../type";
+import { ChatCard, InputField, MessageField } from "../../components";
+import { ActiveChat, Chat, Message, User } from "../../type";
 import { DialogCreateChat } from "../../components/dialog-create-chat";
 import { logout } from "../../services/auth";
 import { connect } from "../../utils/connect";
-import { createChat } from "../../services/chat";
+import {
+  addUser,
+  createChat,
+  createWsChat,
+  deleteUser,
+} from "../../services/chat";
+import Router, { PAGES } from "../../core/Router";
+import { initChatPage } from "../../services/initApp";
 
 interface IMessapePageProps {
-  // chatList: {
-  //   name: string;
-  //   message: string;
-  //   time: string;
-  //   isYourMessage?: boolean;
-  //   count?: number;
-  // }[];
-  // currentChat: {
-  //   text?: string;
-  //   type: "outcoming" | "incoming";
-  //   time: string;
-  //   checked?: boolean;
-  //   img?: string;
-  // }[];
   validate: { [key: string]: Function };
-  // onSend: () => void;
+  onSend: () => void;
   logout: () => void;
   openDialog: () => void;
   closeDialog: () => void;
   onSave: () => void;
+  goProfile: () => void;
+  setActiveChat: (id: number, name: string) => void;
+  onCloseModalAddUser: () => void;
+  onCloseModalDeleteUser: () => void;
+  addUser: () => void;
+  deleteUser: () => void;
   chats: Chat[];
+  user: User;
+  currentChat: ActiveChat;
+  isModalDeleteUser: boolean;
+  messages: Message[];
 }
 type Ref = {
   message: MessageField;
   createChat: DialogCreateChat;
+  chat: ChatCard;
+  userId: InputField;
+  userIdDel: InputField;
 };
 
 export class MessagesPage extends Block<IMessapePageProps, Ref> {
-
   constructor(props: IMessapePageProps) {
     super({
       ...props,
-      // chatList: messagesProps.messages,
-      // currentChat: messagesProps.message,
       validate: {
         message: validators.message,
       },
-      // onSend: () => {
-      //   const message = this.refs.message.value();
-      //   const error = validators.message(message);
-      //   if (error) {
-      //     return;
-      //   }
-
-      //   console.log({
-      //     message,
-      //   });
-      // },
-      logout,
+      onSend: () => {
+        const message = this.refs.message.value();
+        const error = validators.message(message);
+        if (error) {
+          return;
+        }
+        console.log({
+          message,
+        });
+      },
+      logout: () => {
+        logout();
+      },
       openDialog: () => {
         window.store.set({ isOpenDialogChat: true });
-        console.log(" window.store", window.store);
       },
       closeDialog: () => {
-        console.log("closeDialog");
         window.store.set({ isOpenDialogChat: false });
-        console.log("window.store", window.store);
       },
       onSave: () => {
-        console.log("onSave");
         const chatTitle = this.refs.createChat.getChatTitle();
         if (!chatTitle) {
           this.refs.createChat.setError(
@@ -81,8 +80,50 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
           .then(() => window.store.set({ isOpenDialogChat: false }))
           .catch((error) => this.refs.createChat.setError(error));
       },
+      goProfile: () => {
+        Router.go(PAGES.profile);
+      },
+      setActiveChat: (id: number, name: string) => {
+        createWsChat(id, this.props.user);
+        window.store.set({
+          currentChat: {
+            id,
+            name,
+          },
+        });
+      },
+      onCloseModalAddUser: () => {
+        window.store.set({ isModalAddUser: false });
+      },
+      onCloseModalDeleteUser: () => {
+        window.store.set({ isModalDeleteUser: false });
+      },
+      addUser: () => {
+        const userId = Number(this.refs.userId.value());
+        addUser({
+          users: [userId],
+          chatId: this.props.currentChat.id,
+        })
+          .then(() => {
+            console.log("Пользователь добавлен");
+            window.store.set({ isModalAddUser: false });
+          })
+          .catch((error) => console.log(`${error}`));
+      },
+      deleteUser: () => {
+        const userId = Number(this.refs.userIdDel.value());
+        deleteUser({
+          users: [userId],
+          chatId: this.props.currentChat.id,
+        })
+          .then(() => {
+            window.store.set({ isModalDeleteUser: false });
+            console.log("Пользователь удален");
+          })
+          .catch((error) => console.log(`${error}`));
+      },
     });
-    console.log('props',this.props)
+    initChatPage();
   }
 
   protected render(): string {
@@ -90,4 +131,22 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
   }
 }
 
-export default connect(({ chats, user }) => ({ chats, user }))(MessagesPage);
+export default connect(
+  ({
+    chats,
+    user,
+    currentChat,
+    isOpenAddUser,
+    isModalAddUser,
+    isModalDeleteUser,
+    messages,
+  }) => ({
+    chats,
+    user,
+    currentChat,
+    isOpenAddUser,
+    isModalAddUser,
+    isModalDeleteUser,
+    messages,
+  })
+)(MessagesPage);
