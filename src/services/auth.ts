@@ -1,6 +1,5 @@
 import AuthApi from '../api/auth';
-import { CreateUser, LoginRequestData,
-} from '../api/type';
+import { CreateUser, LoginRequestData } from '../api/type';
 import Router, { PAGES } from '../core/Router';
 import { User } from '../type';
 import { apiHasError } from '../utils/apiHasError';
