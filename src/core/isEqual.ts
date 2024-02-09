@@ -42,4 +42,4 @@ function isEqual(lhs: PlainObject, rhs: PlainObject) {
   return true;
 }
 
-export default isEqual
+export default isEqual;

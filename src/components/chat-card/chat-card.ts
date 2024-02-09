@@ -19,11 +19,11 @@ export class ChatCard extends Block<IChatCardProps> {
   constructor(props: IChatCardProps) {
     super({
       ...props,
-      time: [new Date(props.time).getHours(), new Date(props.time).getMinutes() < 10 ? '0' + new Date(props.time).getMinutes() : new Date(props.time).getMinutes()].join(':'),
-      isYourMessage: props.user ? props.user.id === window.store.getState().user?.id : false
+      time: [new Date(props.time).getHours(), new Date(props.time).getMinutes() < 10 ? `0${new Date(props.time).getMinutes()}` : new Date(props.time).getMinutes()].join(':'),
+      isYourMessage: props.user ? props.user.id === window.store.getState().user?.id : false,
     });
   }
-  
+
   protected init(): void {
     this.props.events = {
       click: () => this.props.onClick(this.props.id, this.props.name),

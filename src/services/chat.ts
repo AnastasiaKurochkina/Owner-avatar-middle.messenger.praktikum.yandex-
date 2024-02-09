@@ -48,7 +48,7 @@ const getChatToken = async (chatId: number) => {
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
-  return response
+  return response;
 };
 
 const createWsChat = async (chatid: number, user: User) => {
@@ -65,12 +65,11 @@ const createWsChat = async (chatid: number, user: User) => {
   window.store.set({ chats });
 };
 
-
 export {
   createChat,
   getChats,
   addUser,
   deleteUser,
   getChatToken,
-  createWsChat
+  createWsChat,
 };

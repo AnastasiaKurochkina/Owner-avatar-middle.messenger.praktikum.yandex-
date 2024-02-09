@@ -26,7 +26,6 @@ interface IOptions {
   method?: string;
 }
 
-
 export class HTTPTransport {
   protected apiUrl = 'https://ya-praktikum.tech/api/v2';
 
@@ -87,7 +86,7 @@ export class HTTPTransport {
       });
 
       xhr.onload = function () {
-        if (xhr.response === "OK") {
+        if (xhr.response === 'OK') {
           resolve(xhr.response);
         } else {
           resolve(JSON.parse(xhr.response));

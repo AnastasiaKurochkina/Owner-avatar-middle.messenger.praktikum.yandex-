@@ -26,7 +26,7 @@ const signin = async (data: LoginRequestData) => {
   const me = await getUser();
 
   window.store.set({ user: me });
-  Router.go(PAGES.messeges)
+  Router.go(PAGES.messeges);
 };
 
 // регистрация
@@ -38,7 +38,7 @@ const signup = async (data: CreateUser) => {
 
   const me = await getUser();
   window.store.set({ user: me });
-  Router.go(PAGES.messeges)
+  Router.go(PAGES.messeges);
 };
 
 const logout = async () => {

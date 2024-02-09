@@ -39,5 +39,5 @@ const changeAvatar = async (data: FormData) => {
 export {
   editProfile,
   editPassword,
-  changeAvatar
+  changeAvatar,
 };

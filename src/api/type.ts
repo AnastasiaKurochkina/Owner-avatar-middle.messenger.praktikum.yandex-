@@ -1,4 +1,4 @@
-import { User } from "../type";
+import { User } from '../type';
 
 export type APIError = {
     reason: string;
@@ -7,7 +7,6 @@ export type APIError = {
 export type SignUpResponse = {
     id: number
 }
-
 
 export type CreateUser = Omit<User, 'avatar' | 'display_name' | 'id'> & {
     password: string
@@ -30,4 +29,3 @@ export type ChangeUser = {
 export type ChatToken ={
   token: string;
 }
-

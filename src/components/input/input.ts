@@ -20,14 +20,14 @@ export class Input extends Block<IInputProps> {
       ...props,
       events: {
         blur: props.onBlur,
-        change: props.onChange
+        change: props.onChange,
       },
     });
   }
 
   protected render(): string {
     const {
-      name, type, value, className, placeholder, disabled, id
+      name, type, value, className, placeholder, disabled, id,
     } = this.props;
     return `
         <input

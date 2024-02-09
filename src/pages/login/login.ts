@@ -41,12 +41,12 @@ export class LoginPage extends Block<ILoginPageProps, Ref> {
         });
         signin({
           login,
-          password
-      }).catch((error) => this.refs.error.setProps({error}))
+          password,
+        }).catch((error) => this.refs.error.setProps({ error }));
       },
       onAuth: (event: Event) => {
         event.preventDefault();
-        Router.go(PAGES.signin)
+        Router.go(PAGES.signin);
       },
     });
   }

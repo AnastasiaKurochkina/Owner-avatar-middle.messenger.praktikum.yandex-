@@ -1,19 +1,21 @@
-import Block from "../../core/Block";
-import template from "./messages.hbs?raw";
-import * as validators from "../../utils/validator";
-import { ChatCard, InputField, MessageField } from "../../components";
-import { ActiveChat, Chat, Message, User } from "../../type";
-import { DialogCreateChat } from "../../components/dialog-create-chat";
-import { logout } from "../../services/auth";
-import { connect } from "../../utils/connect";
+import Block from '../../core/Block';
+import template from './messages.hbs?raw';
+import * as validators from '../../utils/validator';
+import { ChatCard, InputField, MessageField } from '../../components';
+import {
+  ActiveChat, Chat, Message, User,
+} from '../../type';
+import { DialogCreateChat } from '../../components/dialog-create-chat';
+import { logout } from '../../services/auth';
+import { connect } from '../../utils/connect';
 import {
   addUser,
   createChat,
   createWsChat,
   deleteUser,
-} from "../../services/chat";
-import Router, { PAGES } from "../../core/Router";
-import { initChatPage } from "../../services/initApp";
+} from '../../services/chat';
+import Router, { PAGES } from '../../core/Router';
+import { initChatPage } from '../../services/initApp';
 
 interface IMessapePageProps {
   validate: { [key: string]: Function };
@@ -72,7 +74,7 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
         const chatTitle = this.refs.createChat.getChatTitle();
         if (!chatTitle) {
           this.refs.createChat.setError(
-            "Название переписки не может быть пустым"
+            'Название переписки не может быть пустым',
           );
           return;
         }
@@ -105,7 +107,7 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
           chatId: this.props.currentChat.id,
         })
           .then(() => {
-            console.log("Пользователь добавлен");
+            console.log('Пользователь добавлен');
             window.store.set({ isModalAddUser: false });
           })
           .catch((error) => console.log(`${error}`));
@@ -118,7 +120,7 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
         })
           .then(() => {
             window.store.set({ isModalDeleteUser: false });
-            console.log("Пользователь удален");
+            console.log('Пользователь удален');
           })
           .catch((error) => console.log(`${error}`));
       },
@@ -148,5 +150,5 @@ export default connect(
     isModalAddUser,
     isModalDeleteUser,
     messages,
-  })
+  }),
 )(MessagesPage);

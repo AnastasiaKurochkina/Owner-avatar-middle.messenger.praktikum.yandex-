@@ -18,14 +18,14 @@ export class Message extends Block<IMessageProps> {
   }
 
   protected render(): string {
-    const {text, userId, user} = this.props;
+    const { text, userId, user } = this.props;
     const time = new Date(this.props.time);
-    const resTime = [time.getHours(), time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()].join(':')
+    const resTime = [time.getHours(), time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes()].join(':');
     // return template;
     return `
-    <div class="message-item ${userId === user.id ? 'outcoming' : 'incoming' }">
+    <div class="message-item ${userId === user.id ? 'outcoming' : 'incoming'}">
 
-    <div class="message-content message-content__${userId === user.id ? 'outcoming' : 'incoming' }">
+    <div class="message-content message-content__${userId === user.id ? 'outcoming' : 'incoming'}">
       <p>${text}</p>
       <div class="message-content__detail">
         <span class="message-content__detail-time">${resTime}</span>
@@ -45,4 +45,4 @@ export class Message extends Block<IMessageProps> {
 </div>`;
   }
 }
-export default connect(({ user }) => ({user }))(Message);
+export default connect(({ user }) => ({ user }))(Message);

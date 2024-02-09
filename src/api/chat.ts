@@ -1,6 +1,8 @@
 import { HTTPTransport } from '../core/httpTransport';
 import { Chat } from '../type';
-import { APIError, ChangeUser, ChatToken, CreateChat } from './type';
+import {
+  APIError, ChangeUser, ChatToken, CreateChat,
+} from './type';
 
 const chatApi = new HTTPTransport('/chats');
 
@@ -25,4 +27,3 @@ export default class ChatApi {
     return chatApi.post<ChatToken>(`/token/${chatId}`);
   }
 }
-

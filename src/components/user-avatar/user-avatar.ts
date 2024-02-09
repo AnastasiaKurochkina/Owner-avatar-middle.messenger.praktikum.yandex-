@@ -1,6 +1,6 @@
-import { Input } from "..";
-import Block from "../../core/Block";
-import { changeAvatar } from "../../services/user";
+import { Input } from '..';
+import Block from '../../core/Block';
+import { changeAvatar } from '../../services/user';
 
 interface Props {
   onChange?: () => void;
@@ -16,7 +16,7 @@ export class UserAvatar extends Block<Props, Ref> {
       ...props,
       img: props.img
         ? `https://ya-praktikum.tech/api/v2/resources${props.img}`
-        : "assets/avatar.jpg",
+        : 'assets/avatar.jpg',
       onChange: () => this.avatarDownload(),
     });
   }
@@ -25,7 +25,7 @@ export class UserAvatar extends Block<Props, Ref> {
     const file = this.refs.file.element as HTMLInputElement;
     const avatar = file.files[0];
     const formData = new FormData();
-    formData.append("avatar", avatar);
+    formData.append('avatar', avatar);
     changeAvatar(formData);
   }
 

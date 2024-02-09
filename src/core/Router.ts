@@ -1,15 +1,15 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-constructor-return */
-import Route from "./Route";
+import Route from './Route';
 
 export enum PAGES {
-  login = "/",
-  signin = "/sign-up",
-  messeges = "/messenger",
-  profile = "/profile",
+  login = '/',
+  signin = '/sign-up',
+  messeges = '/messenger',
+  profile = '/profile',
   profile_edit = '/settings',
-  profile_password_edit = "/settings-password",
-  not_found = "/not-found",
+  profile_password_edit = '/settings-password',
+  not_found = '/not-found',
   server_error = '/server-error',
 }
 
@@ -22,7 +22,7 @@ class Router {
 
   private _currentRoute: Route | null = null;
 
-  private readonly _rootQuery: string = "";
+  private readonly _rootQuery: string = '';
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -68,7 +68,7 @@ class Router {
   }
 
   go(pathname: string) {
-    this.history.pushState({}, "", pathname);
+    this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
 
@@ -85,4 +85,4 @@ class Router {
   }
 }
 
-export default new Router("#app");
+export default new Router('#app');

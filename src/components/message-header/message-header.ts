@@ -15,14 +15,14 @@ export class MessageHeader extends Block<IMessageHeaderProps> {
     super({
       ...props,
       openAddUserModal: () => {
-        window.store.set({ isOpenAddUser: !this.props.isOpenAddUser })
+        window.store.set({ isOpenAddUser: !this.props.isOpenAddUser });
       },
       addUser: () => {
-        window.store.set({ isModalAddUser: true })
+        window.store.set({ isModalAddUser: true });
       },
       deleteUser: () => {
-        window.store.set({ isModalDeleteUser: true })
-      }
+        window.store.set({ isModalDeleteUser: true });
+      },
     });
   }
 
@@ -46,4 +46,4 @@ export class MessageHeader extends Block<IMessageHeaderProps> {
   </div>`;
   }
 }
-export default connect(({ isOpenAddUser, isModalAddUser }) => ({ isOpenAddUser, isModalAddUser }))(MessageHeader)
+export default connect(({ isOpenAddUser, isModalAddUser }) => ({ isOpenAddUser, isModalAddUser }))(MessageHeader);

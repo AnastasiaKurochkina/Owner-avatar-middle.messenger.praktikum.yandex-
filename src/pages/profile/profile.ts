@@ -55,16 +55,16 @@ export class Profile extends Block<IProfileProps, Ref> {
         password: validators.password,
       },
       goProfileEdit: () => {
-        Router.go(PAGES.profile_edit)
+        Router.go(PAGES.profile_edit);
       },
       goProfilePasswordEdit: () => {
-        Router.go(PAGES.profile_password_edit)
+        Router.go(PAGES.profile_password_edit);
       },
       onGoMessages: () => {
-        Router.go(PAGES.messeges)
+        Router.go(PAGES.messeges);
       },
       logout: () => {
-        logout()
+        logout();
       },
     });
   }

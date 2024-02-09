@@ -13,9 +13,9 @@ const initApp = async () => {
   }
 
   const chats = await getChats();
-  window.store.set({user: me, chats})
+  window.store.set({ user: me, chats });
 
-  if (window.location.pathname === PAGES.login || window.location.pathname === PAGES.signin) { 
+  if (window.location.pathname === PAGES.login || window.location.pathname === PAGES.signin) {
     Router.go(PAGES.messeges);
   }
 };

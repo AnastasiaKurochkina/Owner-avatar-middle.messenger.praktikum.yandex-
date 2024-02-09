@@ -62,7 +62,7 @@ const pages = {
 };
 
 Object.entries(pages).forEach(([path, page]) => {
-  Router.use(path, page)
+  Router.use(path, page);
 });
 Router.start();
 

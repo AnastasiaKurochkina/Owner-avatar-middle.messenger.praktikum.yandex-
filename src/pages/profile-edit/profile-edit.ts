@@ -1,11 +1,11 @@
-import Block from "../../core/Block";
-import template from "./profile-edit.hbs?raw";
-import { ProfileInput } from "../../components";
-import * as validators from "../../utils/validator";
-import Router, { PAGES } from "../../core/Router";
-import { connect } from "../../utils/connect";
-import { User } from "../../type";
-import { editProfile } from "../../services/user";
+import Block from '../../core/Block';
+import template from './profile-edit.hbs?raw';
+import { ProfileInput } from '../../components';
+import * as validators from '../../utils/validator';
+import Router, { PAGES } from '../../core/Router';
+import { connect } from '../../utils/connect';
+import { User } from '../../type';
+import { editProfile } from '../../services/user';
 
 export interface ProfileInfo {
   login: string;
@@ -55,12 +55,12 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
         const displayName = this.refs.display_name?.value();
         const phone = this.refs.phone?.value();
         if (
-          !email ||
-          !login ||
-          !firstName ||
-          !secondName ||
-          !displayName ||
-          !phone
+          !email
+          || !login
+          || !firstName
+          || !secondName
+          || !displayName
+          || !phone
         ) {
           return;
         }
