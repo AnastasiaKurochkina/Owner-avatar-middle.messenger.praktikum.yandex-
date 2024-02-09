@@ -1,4 +1,4 @@
-<div class="message-item message-item__{{type}}">
+<div id="message-item" class="message-item {{userId === user.id}} ? 'outcoming' : 'incoming'">
   {{#if text}}
     <div class="message-content message-content__{{type}}">
       <p>{{text}}</p>

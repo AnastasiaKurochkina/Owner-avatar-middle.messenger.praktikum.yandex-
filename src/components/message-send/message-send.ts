@@ -18,7 +18,7 @@ export class MessageSend extends Block<IMessageSendProps> {
 
   protected render(): string {
     return `
-    <button class="messages__send-button">
+    <button class="messages__send-button" id="send-message">
       <i class="fa fa-long-arrow-right arrow" aria-hidden="true"></i>
     </button>
 `;

@@ -1,0 +1,19 @@
+.comeback {
+    background-color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    width: 64px;
+    justify-content: center;
+
+    &__arrow {
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #3369f3;
+      color: #ffff;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }

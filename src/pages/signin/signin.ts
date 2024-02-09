@@ -1,6 +1,8 @@
-import { InputField } from '../../components';
+import { CreateUser } from '../../api/type';
+import { ErrorLine, InputField } from '../../components';
 import Block from '../../core/Block';
-import { navigate } from '../../core/navigate';
+import Router, { PAGES } from '../../core/Router';
+import { signup } from '../../services/auth';
 import * as validators from '../../utils/validator';
 
 type Ref = {
@@ -11,12 +13,14 @@ type Ref = {
   phone: InputField,
   password: InputField,
   password_repeat: InputField,
+  error: ErrorLine
 };
 type TSigninPage = {};
 
 export class SigninPage extends Block<TSigninPage, Ref> {
   constructor() {
     super({
+      error: null,
       validate: {
         login: validators.login,
         name: validators.name,
@@ -52,11 +56,19 @@ export class SigninPage extends Block<TSigninPage, Ref> {
           password,
           passwordRepeat,
         });
-        navigate('messages');
+        const newUser: CreateUser = {
+          login: this.refs.login.value()!,
+          first_name: this.refs.first_name.value()!,
+          second_name: this.refs.second_name.value()!,
+          email: this.refs.email.value()!,
+          phone: this.refs.phone.value()!,
+          password: this.refs.password.value()!,
+        };
+        signup(newUser).catch((error) => this.refs.error.setProps({ error }));
       },
       onGoLogin: (event: Event) => {
         event.preventDefault();
-        navigate('login');
+        Router.go(PAGES.login);
       },
     });
   }
@@ -77,6 +89,7 @@ export class SigninPage extends Block<TSigninPage, Ref> {
             {{{ Button label="Зарегистрироваться" type="primary" page="messages" onClick=onGoMessage}}}
             {{{ Button label="Войти" type="link" page="login" onClick=onGoLogin}}}
         </div>
+        {{{ ErrorLine error=error ref="error"}}}
         {{/Form}}
       </div>
     `;

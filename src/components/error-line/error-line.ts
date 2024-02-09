@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 
 interface IErorLineProps {
-  error: string
+  error?: string | undefined
 }
 
 export class ErrorLine extends Block<IErorLineProps> {
