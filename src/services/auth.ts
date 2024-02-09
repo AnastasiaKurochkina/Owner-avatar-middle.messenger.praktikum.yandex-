@@ -34,7 +34,6 @@ const signup = async (data: CreateUser) => {
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
-
   const me = await getUser();
   window.store.set({ user: me });
   Router.go(PAGES.messeges);
