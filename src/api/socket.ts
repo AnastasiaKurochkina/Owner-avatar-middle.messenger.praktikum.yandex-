@@ -67,6 +67,6 @@ export const createWebSocket = async (chatid: number, user: User) => {
   });
 
   socket.addEventListener('error', (event) => {
-    console.log('Ошибка', event.message);
+    console.log('Ошибка', event);
   });
 };

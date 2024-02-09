@@ -23,10 +23,12 @@ export class UserAvatar extends Block<Props, Ref> {
 
   private avatarDownload() {
     const file = this.refs.file.element as HTMLInputElement;
-    const avatar = file.files[0];
-    const formData = new FormData();
-    formData.append('avatar', avatar);
-    changeAvatar(formData);
+    if (file.files?.length) {
+      const avatar = file.files[0];
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+      changeAvatar(formData);
+    }
   }
 
   protected render(): string {

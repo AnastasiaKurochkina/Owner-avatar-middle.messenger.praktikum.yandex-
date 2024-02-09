@@ -50,7 +50,7 @@ class Route {
     return pathname === this._pathname;
   }
 
-  render(route?: Route, pathname?: string) {
+  render() {
     this._block = new this._blockClass();
     render(this._props.rootQuery, this._block);
   }

@@ -1,6 +1,7 @@
 import { HTTPTransport } from '../core/httpTransport';
+import { User } from '../type';
 import {
-  APIError, CreateUser, LoginRequestData, SignUpResponse, UserDTO,
+  APIError, CreateUser, LoginRequestData, SignUpResponse,
 } from './type';
 
 const authApi = new HTTPTransport('/auth');
@@ -14,7 +15,7 @@ export default class AuthApi {
     return authApi.post('/signin', { data });
   }
 
-  async me(): Promise<UserDTO | APIError> {
+  async me(): Promise<User | APIError> {
     return authApi.get('/user');
   }
 

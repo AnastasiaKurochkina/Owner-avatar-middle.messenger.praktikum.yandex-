@@ -7,7 +7,6 @@ const pages = {
   profile: Pages.ProfilePage,
   notFound: Pages.NotFound,
   serverError: Pages.ServerError,
-  allPages: Pages.AllPages,
 };
 
 export function navigate(page: string) {
