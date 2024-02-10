@@ -33,23 +33,24 @@ export const createWebSocket = async (chatid: number, user: User) => {
 
   socket.addEventListener('message', (event) => {
     console.log('Получены данные', event.data);
-
-    const data = JSON.parse(event.data);
-    if (data.type === 'pong' || data.type === 'user connected') {
-      return;
+    try {
+      const data = JSON.parse(event.data);
+      if (data.type === 'pong' || data.type === 'user connected') {
+        return;
+      }
+      const state = window.store.getState();
+      if (Array.isArray(data)) {
+        window.store.set({
+          messages: [...data.reverse()],
+        });
+      } else {
+        window.store.set({
+          messages: [...state.messages, data],
+        });
+      }
+    } catch (error) {
+      console.log('Ошибка при парсере JSON', error);
     }
-
-    const state = window.store.getState();
-    if (Array.isArray(data)) {
-      window.store.set({
-        messages: [...data.reverse()],
-      });
-    } else {
-      window.store.set({
-        messages: [...state.messages, data],
-      });
-    }
-
     const sendBtn = document.getElementById('send-message');
     sendBtn?.addEventListener('click', () => {
       const input: HTMLInputElement = document.getElementById(
