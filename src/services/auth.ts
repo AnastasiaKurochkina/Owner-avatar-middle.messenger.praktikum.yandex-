@@ -1,6 +1,5 @@
 import AuthApi from '../api/auth';
-import { CreateUser, LoginRequestData,
-} from '../api/type';
+import { CreateUser, LoginRequestData } from '../api/type';
 import Router, { PAGES } from '../core/Router';
 import { User } from '../type';
 import { apiHasError } from '../utils/apiHasError';
@@ -34,7 +33,6 @@ const signup = async (data: CreateUser) => {
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
-
   const me = await getUser();
   window.store.set({ user: me });
   Router.go(PAGES.messeges);
