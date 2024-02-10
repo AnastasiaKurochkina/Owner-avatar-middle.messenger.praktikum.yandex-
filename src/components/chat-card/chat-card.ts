@@ -11,8 +11,9 @@ interface IChatCardProps {
   count: number,
   isYourMessage: boolean,
   user?: User,
-  onClick: (id: number, name:string) => void;
+  onClick: (id: number, name:string, avatar?: string) => void;
   events?: { click: () => void };
+  avatar?: string
 }
 
 export class ChatCard extends Block<IChatCardProps> {
@@ -26,7 +27,7 @@ export class ChatCard extends Block<IChatCardProps> {
 
   protected init(): void {
     this.props.events = {
-      click: () => this.props.onClick(this.props.id, this.props.name),
+      click: () => this.props.onClick(this.props.id, this.props.name, this.props.avatar),
     };
   }
 

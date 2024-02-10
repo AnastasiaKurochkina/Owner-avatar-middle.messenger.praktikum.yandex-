@@ -15,13 +15,13 @@
     {{{ SearchField }}}
     {{#each chats}}
     {{{ ChatCard name=this.title time=this.last_message.time message=this.last_message.content id=this.id user=this.last_message.user
-    count=this.unread_count onClick=../setActiveChat ref=chat}}}
+    count=this.unread_count onClick=../setActiveChat ref=chat avatar=this.avatar}}}
     {{/each}}
   </div>
   <!-- Сам чат -->
   {{#if currentChat}}
   <div class="messages">
-    {{{ MessageHeader name=currentChat.name}}}
+    {{{ MessageHeader name=currentChat.name chatId=currentChat.id avatar=currentChat.avatar}}}
     <div class="messages__date">
       {{!-- 19 июня --}}
     </div>

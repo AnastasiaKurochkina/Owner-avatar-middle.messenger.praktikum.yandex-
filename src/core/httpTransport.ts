@@ -23,8 +23,10 @@ interface IOptions {
   timeout?: number;
   data?: object;
   headers?: { [key: string]: string };
-  method?: string;
+  method?: METHOD;
 }
+
+type HTTPMethod = <R = unknown>(url: string, options?: IOptions) => Promise<R>;
 
 export class HTTPTransport {
   protected apiUrl = 'https://ya-praktikum.tech/api/v2';
@@ -33,39 +35,19 @@ export class HTTPTransport {
     this.apiUrl = `${this.apiUrl}${apiPath}`;
   }
 
-  get<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, {
-      ...options,
-      method: METHOD.GET,
-    });
-  }
+  get: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, {...options, method: METHOD.GET}, options.timeout)
 
-  post<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, {
-      ...options,
-      method: METHOD.POST,
-    });
-  }
+  put: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.PUT }, options.timeout);
 
-  put<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, {
-      ...options,
-      method: METHOD.PUT,
-    });
-  }
+  post: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.POST }, options.timeout);
 
-  delete<TResponse>(url: string, options: IOptions = {}): Promise<TResponse> {
-    return this.request<TResponse>(`${this.apiUrl}${url}`, {
-      ...options,
-      method: METHOD.DELETE,
-    });
-  }
+  delete: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.DELETE }, options.timeout);
 
-  request = <TResponse>(
+  request = <R>(
     url: string,
     options: IOptions = {},
     timeout = 5000,
-  ): Promise<TResponse> => {
+  ): Promise<R> => {
     const { headers = {}, method, data } = options;
 
     return new Promise((resolve, reject) => {
@@ -92,8 +74,6 @@ export class HTTPTransport {
           resolve(JSON.parse(xhr.response));
         }
       };
-      // не совсем уверена, что правильно написала конструкцию resolve и что тут нужно использовать parse,
-      // но в сервисе не получилось, ругается на типизацию, можете подсказать, пожалуйста?
 
       xhr.onabort = reject;
       xhr.onerror = reject;
