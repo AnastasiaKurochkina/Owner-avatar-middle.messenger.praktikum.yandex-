@@ -35,7 +35,7 @@ export class HTTPTransport {
     this.apiUrl = `${this.apiUrl}${apiPath}`;
   }
 
-  get: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, {...options, method: METHOD.GET}, options.timeout)
+  get: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.GET }, options.timeout);
 
   put: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.PUT }, options.timeout);
 

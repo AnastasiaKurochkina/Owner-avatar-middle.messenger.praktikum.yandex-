@@ -29,4 +29,3 @@ export type ChangeUser = {
 export type ChatToken ={
   token: string;
 }
-
