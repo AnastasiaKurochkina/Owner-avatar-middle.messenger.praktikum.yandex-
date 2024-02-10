@@ -32,7 +32,7 @@ export class Input extends Block<IInputProps> {
     return `
         <input
         class=${className}
-        ${placeholder ? `value="${placeholder}"` : ''}
+        ${placeholder ? `placeholder="${placeholder}"` : ''}
         ref="input"
         name=${name}
         type=${type}
