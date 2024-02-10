@@ -1,4 +1,5 @@
 import Block from '../../core/Block';
+import { deleteChat } from '../../services/chat';
 import { connect } from '../../utils/connect';
 
 type IMessageHeaderProps = {
@@ -7,7 +8,10 @@ type IMessageHeaderProps = {
   addUser: () => void,
   isOpenAddUser: boolean,
   isModalAddUser: boolean,
-  deleteUser: () => void
+  chatId: number,
+  avatar?: string,
+  deleteUser: () => void,
+  deleteChat: () => void,
 }
 
 export class MessageHeader extends Block<IMessageHeaderProps> {
@@ -23,17 +27,28 @@ export class MessageHeader extends Block<IMessageHeaderProps> {
       deleteUser: () => {
         window.store.set({ isModalDeleteUser: true });
       },
+      deleteChat: () => {
+        deleteChat({
+          chatId: this.props.chatId,
+        });
+      },
     });
   }
 
   protected render(): string {
-    const { name } = this.props;
+    const { name, chatId } = this.props;
     return `<div class="messages-header">
     <div class="user-info">
-      <div class="user-info__avatar"></div>
+    {{{ChatAvatar chatId=${chatId} img=avatar }}}
       <span class="user-info__name">${name}</span>
     </div>
     <div class="navigation">
+      {{{ Button
+        label="Удалить чат"
+        type="second"
+        className="danger"
+        onClick=deleteChat
+      }}}
      {{{OptionIcon onClick=openAddUserModal}}}
      {{#if isOpenAddUser}} 
       {{#> Tooltip style="top:20px; right:0"}}

@@ -25,7 +25,7 @@ interface IMessapePageProps {
   closeDialog: () => void;
   onSave: () => void;
   goProfile: () => void;
-  setActiveChat: (id: number, name: string) => void;
+  setActiveChat: (id: number, name: string, avatar: string) => void;
   onCloseModalAddUser: () => void;
   onCloseModalDeleteUser: () => void;
   addUser: () => void;
@@ -85,12 +85,13 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
       goProfile: () => {
         Router.go(PAGES.profile);
       },
-      setActiveChat: (id: number, name: string) => {
+      setActiveChat: (id: number, name: string, avatar: string) => {
         createWsChat(id, this.props.user);
         window.store.set({
           currentChat: {
             id,
             name,
+            avatar,
           },
         });
       },

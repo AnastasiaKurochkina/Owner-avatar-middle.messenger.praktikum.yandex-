@@ -11,7 +11,8 @@ export type AppState = {
 }
 export type ActiveChat = {
   id: number,
-  name: string
+  name: string,
+  avatar?: string | null
 }
 
 export type Message = {

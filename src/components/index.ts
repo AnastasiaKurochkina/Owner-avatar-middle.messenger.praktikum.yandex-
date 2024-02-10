@@ -19,3 +19,4 @@ export { ButtonComeback } from './button-comeback';
 export { OptionIcon } from './option-icon';
 export { ChatOption } from './chat-option';
 export { UserAvatar } from './user-avatar';
+export { ChatAvatar } from './chat-avatar';

@@ -26,4 +26,12 @@ export default class ChatApi {
   async getToken(chatId: number): Promise<ChatToken | APIError > {
     return chatApi.post<ChatToken>(`/token/${chatId}`);
   }
+
+  async changeAvatar(data: FormData): Promise<Chat | APIError > {
+    return chatApi.put<Chat>('/avatar', { data });
+  }
+
+  async deleteChat(data: {chatId: number}): Promise<void | APIError > {
+    return chatApi.delete<void>('/', { data });
+  }
 }

@@ -49,6 +49,7 @@ registerComponent('ButtonComeback', Components.ButtonComeback);
 registerComponent('OptionIcon', Components.OptionIcon);
 registerComponent('ChatOption', Components.ChatOption);
 registerComponent('UserAvatar', Components.UserAvatar);
+registerComponent('ChatAvatar', Components.ChatAvatar);
 
 const pages = {
   [PAGES.login]: Pages.LoginPage,
