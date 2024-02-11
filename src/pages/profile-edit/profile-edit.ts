@@ -67,6 +67,7 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
         ) {
           this.refs.error.setProps({ error: 'Проверьте корректность введеных данных' });
           return;
+          // такое чувство, что есть ошибка в ручке /auth/signup, к примеру, отправляю в поле "second_name": "Test", а в ответ потом по роуту /auth/user получаю в поле "second_name": "T"
         }
         const data: ProfileInfo = {
           login,
