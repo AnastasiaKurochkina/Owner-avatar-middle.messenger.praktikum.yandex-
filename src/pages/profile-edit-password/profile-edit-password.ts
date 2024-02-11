@@ -18,6 +18,7 @@ interface IProfileProps {
   goProfileEdit: () => void;
   goProfilePasswordEdit: () => void;
   onGoProfile: () => void;
+  error: string | null,
 }
 
 type Ref = {
@@ -37,6 +38,7 @@ export class ProfileEditPassword extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
     super({
       ...props,
+      error: null,
       validate: {
         login: validators.login,
         email: validators.email,
@@ -50,6 +52,7 @@ export class ProfileEditPassword extends Block<IProfileProps, Ref> {
         const newPassword = this.refs.newPassword?.value();
         const newPasswordRepeat = this.refs.newPasswordRepeat?.value();
         if (!oldPassword || !newPassword || !newPasswordRepeat) {
+          this.refs.error.setProps({ error: 'Проверьте корректность введеных данных' });
           return;
         }
         const data: ProfilePassword = {
@@ -58,6 +61,7 @@ export class ProfileEditPassword extends Block<IProfileProps, Ref> {
           newPasswordRepeat,
         };
         if (!validators.validProfilePasswors(data)) {
+          this.refs.error.setProps({ error: 'Проверьте корректность введеных данных' });
           return;
         }
         editPassword({
