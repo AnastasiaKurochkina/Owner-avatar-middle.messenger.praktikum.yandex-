@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import template from './profile-edit.hbs?raw';
-import { ProfileInput } from '../../components';
+import { ErrorLine, ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
 import Router, { PAGES } from '../../core/Router';
 import { connect } from '../../utils/connect';
@@ -20,6 +20,7 @@ interface IProfileProps {
   onSaveProfile: (event: Event) => void;
   validate: { [key: string]: Function };
   user: User;
+  error: string | null,
   onGoProfile: () => void;
 }
 
@@ -33,12 +34,14 @@ type Ref = {
   oldPassword?: ProfileInput;
   newPassword?: ProfileInput;
   newPasswordRepeat?: ProfileInput;
+  error: ErrorLine,
 };
 
 export class ProfileEdit extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
     super({
       ...props,
+      error: null,
       validate: {
         login: validators.login,
         email: validators.email,
@@ -62,6 +65,7 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
           || !displayName
           || !phone
         ) {
+          this.refs.error.setProps({ error: 'Проверьте корректность введеных данных' });
           return;
         }
         const data: ProfileInfo = {
@@ -73,6 +77,7 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
           phone,
         };
         if (!validators.validProfileForm(data)) {
+          this.refs.error.setProps({ error: 'Проверьте корректность введеных данных' });
           return;
         }
         const userNew = {

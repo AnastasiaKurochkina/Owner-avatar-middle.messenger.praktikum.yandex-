@@ -19,7 +19,7 @@
             ref="display_name" validate=validate.name}}}
             {{{ ProfileInput name="phone" type="text" label="Телефон" value=user.phone ref="phone"
             validate=validate.phone}}}
-
+            {{{ ErrorLine error=error ref="error"}}}
             <div class="profile-button profile-button__save"> {{{ Button label="Сохранить" type="primary"
                 onClick=onSaveProfile}}}
             </div>
