@@ -21,4 +21,19 @@
     font-size: 11px;
     text-align: center;
   }
+  
+  &__second {
+    padding: 5px 0;
+    border-bottom: 1px solid #efefef;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: start;
+    color: #3369f3;
+  }
 }
+
+.danger {
+  color: red;
+} 
+
+

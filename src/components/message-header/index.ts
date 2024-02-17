@@ -1,1 +1,3 @@
-export { MessageHeader } from './message-header';
+import MessageHeader from './message-header';
+
+export default MessageHeader;

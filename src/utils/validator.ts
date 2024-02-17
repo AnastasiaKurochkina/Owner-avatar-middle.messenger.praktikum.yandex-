@@ -79,7 +79,7 @@ export const validProfileForm = (params: ProfileInfo) => {
 export const validProfilePasswors = (params: ProfilePassword) => {
   const errorOldPassword = password(params.oldPassword);
   const errorNewPassword = password(params.newPassword);
-  const errorNewPasswordRepeat = phone(params.newPasswordRepeat);
+  const errorNewPasswordRepeat = password(params.newPasswordRepeat);
   if (errorOldPassword || errorNewPassword || errorNewPasswordRepeat) {
     return false;
   }

@@ -10,6 +10,14 @@
   }
 }
 
+.incoming {
+  justify-content: flex-start;
+}
+
+.outcoming  {
+  justify-content: flex-end;
+}
+
 .message-content {
   border-radius: 8px;
   font-size: 12px;
@@ -47,3 +55,5 @@
     margin-top: 5px;
   }
 }
+
+
