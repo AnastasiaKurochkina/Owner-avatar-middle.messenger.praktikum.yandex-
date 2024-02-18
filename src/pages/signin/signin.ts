@@ -76,7 +76,7 @@ export class SigninPage extends Block<TSigninPage, Ref> {
   protected render(): string {
     return `
       <div class="container">
-        {{#> Form }}
+        {{#Form }}
         <h1 class="header">Регистрация</h1>
         {{{ InputField label="Почта" type="text" name="email" ref="email"  validate=validate.email}}}
         {{{ InputField label="Логин" type="text" name="login" ref="login" validate=validate.login}}}

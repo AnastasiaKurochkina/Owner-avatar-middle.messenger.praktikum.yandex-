@@ -51,7 +51,7 @@ export class MessageHeader extends Block<IMessageHeaderProps> {
       }}}
      {{{OptionIcon onClick=openAddUserModal}}}
      {{#if isOpenAddUser}} 
-      {{#> Tooltip style="top:20px; right:0"}}
+      {{#Tooltip style="top:20px; right:0"}}
       {{{ChatOption src="assets/plus.jpg" label="Добавить пользователя" onClick=addUser}}}
       {{{ChatOption src="assets/minus.jpg" label="Удалить пользователя" onClick=deleteUser}}}
       {{/Tooltip}}

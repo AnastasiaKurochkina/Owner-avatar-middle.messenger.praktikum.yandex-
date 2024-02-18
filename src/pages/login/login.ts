@@ -53,7 +53,7 @@ export class LoginPage extends Block<ILoginPageProps, Ref> {
 
   protected render(): string {
     return `<div class="container">
-      {{#> Form }}
+      {{#Form }}
       <h1 class="header">Авторизация</h1>
       {{{ InputField label="Логин" name="login" type="text" errors="Неверный логин" ref="login" validate=validate.login }}}
       {{{ InputField label="Пароль" name="password" type="password" ref="password" validate=validate.password}}}
