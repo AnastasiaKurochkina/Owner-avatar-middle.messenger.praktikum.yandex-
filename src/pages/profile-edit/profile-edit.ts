@@ -2,10 +2,11 @@ import Block from '../../core/Block';
 import template from './profile-edit.hbs?raw';
 import { ErrorLine, ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import Router, { PAGES } from '../../core/Router';
+import { PAGES } from '../../core/Router';
 import { connect } from '../../utils/connect';
 import { User } from '../../type';
 import { editProfile } from '../../services/user';
+import { router } from '../../main';
 
 export interface ProfileInfo {
   login: string;
@@ -91,13 +92,13 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
           display_name: displayName,
           phone,
         };
-        editProfile(userNew).then(() => Router.go(PAGES.profile));
+        editProfile(userNew).then(() => router.go(PAGES.profile));
         console.log({
           data,
         });
       },
       onGoProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
     });
   }

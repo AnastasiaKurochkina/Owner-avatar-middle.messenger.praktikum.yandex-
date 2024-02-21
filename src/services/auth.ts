@@ -1,6 +1,7 @@
 import AuthApi from '../api/auth';
 import { CreateUser, LoginRequestData } from '../api/type';
-import Router, { PAGES } from '../core/Router';
+import { PAGES } from '../core/Router';
+import { router } from '../main';
 import { User } from '../type';
 import { apiHasError } from '../utils/apiHasError';
 
@@ -24,7 +25,7 @@ const signin = async (data: LoginRequestData) => {
   const me = await getUser();
 
   window.store.set({ user: me });
-  Router.go(PAGES.messeges);
+  router.go(PAGES.messeges);
 };
 
 // регистрация
@@ -35,13 +36,13 @@ const signup = async (data: CreateUser) => {
   }
   const me = await getUser();
   window.store.set({ user: me });
-  Router.go(PAGES.messeges);
+  router.go(PAGES.messeges);
 };
 
 const logout = async () => {
   await authApi.logout();
   window.store.set({ user: null, chats: [] });
-  Router.go(PAGES.login);
+  router.go(PAGES.login);
 };
 
 export {

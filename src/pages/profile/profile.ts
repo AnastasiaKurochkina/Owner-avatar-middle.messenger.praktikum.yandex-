@@ -2,10 +2,11 @@ import Block from '../../core/Block';
 import template from './profile.hbs?raw';
 import { ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import Router, { PAGES } from '../../core/Router';
+import { PAGES } from '../../core/Router';
 import { User } from '../../type';
 import { connect } from '../../utils/connect';
 import { logout } from '../../services/auth';
+import { router } from '../../main';
 
 export interface ProfileInfo {
   login: string;
@@ -55,13 +56,13 @@ export class Profile extends Block<IProfileProps, Ref> {
         password: validators.password,
       },
       goProfileEdit: () => {
-        Router.go(PAGES.profile_edit);
+        router.go(PAGES.profile_edit);
       },
       goProfilePasswordEdit: () => {
-        Router.go(PAGES.profile_password_edit);
+        router.go(PAGES.profile_password_edit);
       },
       onGoMessages: () => {
-        Router.go(PAGES.messeges);
+        router.go(PAGES.messeges);
       },
       logout: () => {
         logout();

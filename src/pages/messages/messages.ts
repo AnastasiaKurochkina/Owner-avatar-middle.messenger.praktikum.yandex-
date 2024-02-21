@@ -14,8 +14,9 @@ import {
   createWsChat,
   deleteUser,
 } from '../../services/chat';
-import Router, { PAGES } from '../../core/Router';
+import { PAGES } from '../../core/Router';
 import { initChatPage } from '../../services/initApp';
+import { router } from '../../main';
 
 interface IMessapePageProps {
   validate: { [key: string]: Function };
@@ -83,7 +84,7 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
           .catch((error) => this.refs.createChat.setError(error));
       },
       goProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
       setActiveChat: (id: number, name: string, avatar: string) => {
         createWsChat(id, this.props.user);

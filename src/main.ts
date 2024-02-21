@@ -60,10 +60,22 @@ const pages = {
   [PAGES.not_found]: Pages.NotFound,
   [PAGES.server_error]: Pages.ServerError,
 };
+// const router = new Router('#app');
 
-Object.entries(pages).forEach(([path, page]) => {
-  Router.use(path, page);
+// Object.entries(pages).forEach(([path, page]) => {
+//   router.use(path, page);
+// });
+// router.start();
+
+// eslint-disable-next-line import/no-mutable-exports
+export let router: Router;
+
+document.addEventListener('DOMContentLoaded', () => {
+  router = new Router('#app')
+  Object.entries(pages).forEach(([path, page]) => {
+  router.use(path, page);
 });
-Router.start();
+  router.start();
+  initApp();
+});
 
-document.addEventListener('DOMContentLoaded', () => initApp());

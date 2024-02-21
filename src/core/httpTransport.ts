@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-shadow
-enum METHOD {
+export enum METHOD {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -35,7 +35,13 @@ export class HTTPTransport {
     this.apiUrl = `${this.apiUrl}${apiPath}`;
   }
 
-  get: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.GET }, options.timeout);
+  get: HTTPMethod = (url, options = {}) => {
+    const urltemp = options.data ? `${url}${queryStringify(options.data)}` : url
+    return this.request(`${this.apiUrl}${urltemp}`, {
+        ...options,
+        method: METHOD.GET,
+    })
+}
 
   put: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.PUT }, options.timeout);
 
@@ -58,8 +64,7 @@ export class HTTPTransport {
 
       const xhr = new XMLHttpRequest();
       const isGet = method === METHOD.GET;
-
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.open(method,url)
 
       xhr.withCredentials = true;
 

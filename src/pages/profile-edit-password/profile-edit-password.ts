@@ -2,9 +2,10 @@ import Block from '../../core/Block';
 import template from './profile-edit-password.hbs?raw';
 import { ErrorLine, ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import Router, { PAGES } from '../../core/Router';
+import { PAGES } from '../../core/Router';
 import { editPassword } from '../../services/user';
 import { connect } from '../../utils/connect';
+import { router } from '../../main';
 
 export interface ProfilePassword {
   oldPassword: string;
@@ -68,17 +69,17 @@ export class ProfileEditPassword extends Block<IProfileProps, Ref> {
           oldPassword,
           newPassword,
         })
-          .then(() => Router.go(PAGES.profile))
+          .then(() => router.go(PAGES.profile))
           .catch((error) => this.refs.error.setProps({ error }));
       },
       goProfileEdit: () => {
-        Router.go(PAGES.profile_edit);
+        router.go(PAGES.profile_edit);
       },
       goProfilePasswordEdit: () => {
-        Router.go(PAGES.profile_password_edit);
+        router.go(PAGES.profile_password_edit);
       },
       onGoProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
     });
   }
