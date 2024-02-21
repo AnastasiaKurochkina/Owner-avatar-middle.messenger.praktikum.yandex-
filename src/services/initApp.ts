@@ -1,9 +1,10 @@
 import { PAGES } from '../core/Route';
-import { router } from '../main';
+import Router from '../core/Router';
 import { getUser } from './auth';
 import { getChats } from './chat';
 
 const initApp = async () => {
+  const router = new Router('app');
   let me = null;
   try {
     me = await getUser();

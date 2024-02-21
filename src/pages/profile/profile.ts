@@ -2,11 +2,10 @@ import Block from '../../core/Block';
 import template from './profile.hbs?raw';
 import { ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import { PAGES } from '../../core/Router';
+import Router, { PAGES } from '../../core/Router';
 import { User } from '../../type';
 import { connect } from '../../utils/connect';
 import { logout } from '../../services/auth';
-import { router } from '../../main';
 
 export interface ProfileInfo {
   login: string;
@@ -46,6 +45,7 @@ type Ref = {
 
 export class Profile extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       validate: {

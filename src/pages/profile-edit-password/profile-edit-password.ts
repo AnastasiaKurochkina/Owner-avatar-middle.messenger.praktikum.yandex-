@@ -2,10 +2,9 @@ import Block from '../../core/Block';
 import template from './profile-edit-password.hbs?raw';
 import { ErrorLine, ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import { PAGES } from '../../core/Router';
+import Router, { PAGES } from '../../core/Router';
 import { editPassword } from '../../services/user';
 import { connect } from '../../utils/connect';
-import { router } from '../../main';
 
 export interface ProfilePassword {
   oldPassword: string;
@@ -37,6 +36,7 @@ type Ref = {
 
 export class ProfileEditPassword extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       error: null,

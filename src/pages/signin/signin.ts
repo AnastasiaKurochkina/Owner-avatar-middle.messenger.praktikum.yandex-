@@ -1,8 +1,7 @@
 import { CreateUser } from '../../api/type';
 import { ErrorLine, InputField } from '../../components';
 import Block from '../../core/Block';
-import { PAGES } from '../../core/Router';
-import { router } from '../../main';
+import Router, { PAGES } from '../../core/Router';
 import { signup } from '../../services/auth';
 import * as validators from '../../utils/validator';
 
@@ -20,6 +19,7 @@ type TSigninPage = {};
 
 export class SigninPage extends Block<TSigninPage, Ref> {
   constructor() {
+    const router = new Router('app');
     super({
       error: null,
       validate: {

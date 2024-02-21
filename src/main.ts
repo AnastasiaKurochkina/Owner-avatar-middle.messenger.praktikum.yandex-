@@ -61,14 +61,10 @@ const pages = {
   [PAGES.server_error]: Pages.ServerError,
 };
 
-// eslint-disable-next-line import/no-mutable-exports
-export let router: Router;
-
-document.addEventListener('DOMContentLoaded', async () => {
-  router = new Router('app');
-  Object.entries(pages).forEach(([path, page]) => {
-    router.use(path, page);
-  });
-  router.start();
-  await initApp();
+export const router = new Router('app');
+Object.entries(pages).forEach(([path, page]) => {
+  router.use(path, page);
 });
+router.start();
+
+document.addEventListener('DOMContentLoaded', () => initApp());

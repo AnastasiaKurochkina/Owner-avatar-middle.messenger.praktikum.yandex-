@@ -14,9 +14,8 @@ import {
   createWsChat,
   deleteUser,
 } from '../../services/chat';
-import { PAGES } from '../../core/Router';
+import Router, { PAGES } from '../../core/Router';
 import { initChatPage } from '../../services/initApp';
-import { router } from '../../main';
 
 interface IMessapePageProps {
   validate: { [key: string]: Function };
@@ -47,6 +46,7 @@ type Ref = {
 
 export class MessagesPage extends Block<IMessapePageProps, Ref> {
   constructor(props: IMessapePageProps) {
+    const router = new Router('app');
     super({
       ...props,
       validate: {

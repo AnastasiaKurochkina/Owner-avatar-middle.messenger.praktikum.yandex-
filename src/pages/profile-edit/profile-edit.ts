@@ -2,11 +2,10 @@ import Block from '../../core/Block';
 import template from './profile-edit.hbs?raw';
 import { ErrorLine, ProfileInput } from '../../components';
 import * as validators from '../../utils/validator';
-import { PAGES } from '../../core/Router';
+import Router, { PAGES } from '../../core/Router';
 import { connect } from '../../utils/connect';
 import { User } from '../../type';
 import { editProfile } from '../../services/user';
-import { router } from '../../main';
 
 export interface ProfileInfo {
   login: string;
@@ -40,6 +39,7 @@ type Ref = {
 
 export class ProfileEdit extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       error: null,

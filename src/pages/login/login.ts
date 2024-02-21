@@ -1,7 +1,6 @@
 import { ErrorLine, InputField } from '../../components';
 import Block from '../../core/Block';
-import { PAGES } from '../../core/Router';
-import { router } from '../../main';
+import Router, { PAGES } from '../../core/Router';
 // import { navigate } from '../../core/navigate';
 import { signin } from '../../services/auth';
 import * as validators from '../../utils/validator';
@@ -20,6 +19,7 @@ interface ILoginPageProps {
 
 export class LoginPage extends Block<ILoginPageProps, Ref> {
   constructor() {
+    const router = new Router('app');
     super({
       error: null,
       validate: {
