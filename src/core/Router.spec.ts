@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-expressions */
-import { expect } from "chai";
+import { expect } from 'chai';
 import sinon from 'sinon';
-import Router from "./Router";
-import Block from "./Block";
-import Route from "./Route";
+import Router from './Router';
+import Block from './Block';
+import Route from './Route';
+
 describe('Router', () => {
   let router: Router;
   beforeEach(() => {
-    router = new Router("#app");
+    router = new Router('#app');
   });
 
   it('Добавление маршрутов', () => {
-    router.use("/test", Block);
-    const route = router.getRoute("/test");
+    router.use('/test', Block);
+    const route = router.getRoute('/test');
     expect(route)
       .to
       .be
@@ -23,11 +24,11 @@ describe('Router', () => {
     const spyRouter = sinon.spy(router, 'start');
     router.start();
     expect(spyRouter.called).to.be.true;
-});
+  });
 
   it('Получить роутер', () => {
-    router.use("/test", Block);
-    const route = router.getRoute("/test");
+    router.use('/test', Block);
+    const route = router.getRoute('/test');
     expect(route)
       .to
       .be
@@ -36,7 +37,7 @@ describe('Router', () => {
 
   it('Перейти по роутеру', () => {
     const spyRouter = sinon.spy(router, 'go');
-    router.go('/new-test')
+    router.go('/new-test');
     expect(spyRouter.calledWithMatch('/new-test')).to.be.true;
   });
 
@@ -45,7 +46,4 @@ describe('Router', () => {
     router.back();
     expect(spyRouter.calledOnce).to.be.true;
   });
-
-
-
 });

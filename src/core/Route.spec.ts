@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
-import { expect } from "chai";
-import Route from "./Route";
-import Block from "./Block";
+import { expect } from 'chai';
 import sinon from 'sinon';
+import Route from './Route';
+import Block from './Block';
+
 interface Props {}
 describe('Route', () => {
   let route: Route;
@@ -39,15 +40,12 @@ describe('Route', () => {
     route.leave();
     const app = document.querySelector('#app');
     const myComponent = app?.querySelector('.my-component');
-    expect(myComponent).to.be.null; 
-});
+    expect(myComponent).to.be.null;
+  });
 
   it('Отрисовка компонента', () => {
     const renderSpy = sinon.spy(route, 'render');
     route.render();
     expect(renderSpy.calledOnce).to.be.true;
   });
-
-
-
 });

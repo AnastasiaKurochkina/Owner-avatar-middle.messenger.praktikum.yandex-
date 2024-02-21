@@ -36,12 +36,12 @@ export class HTTPTransport {
   }
 
   get: HTTPMethod = (url, options = {}) => {
-    const urltemp = options.data ? `${url}${queryStringify(options.data)}` : url
+    const urltemp = options.data ? `${url}${queryStringify(options.data)}` : url;
     return this.request(`${this.apiUrl}${urltemp}`, {
-        ...options,
-        method: METHOD.GET,
-    })
-}
+      ...options,
+      method: METHOD.GET,
+    });
+  };
 
   put: HTTPMethod = (url, options = {}) => this.request(`${this.apiUrl}${url}`, { ...options, method: METHOD.PUT }, options.timeout);
 
@@ -64,7 +64,7 @@ export class HTTPTransport {
 
       const xhr = new XMLHttpRequest();
       const isGet = method === METHOD.GET;
-      xhr.open(method,url)
+      xhr.open(method, url);
 
       xhr.withCredentials = true;
 

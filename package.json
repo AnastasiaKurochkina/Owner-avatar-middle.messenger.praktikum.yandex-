@@ -12,7 +12,14 @@
     "lint--fix": "npm run lint -- --fix",
     "stylelint": "stylelint \"src/**/*.scss\" ",
     "stylelint--fix": "npm run stylelint --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "test-all": "npm run lint && npm run stylelint && npm run test",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run testl-all"
+    }
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",
@@ -26,6 +33,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "handlebars": "^4.7.8",
+    "husky": "^8.0.3",
     "jsdom": "^24.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^10.3.0",
