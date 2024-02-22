@@ -4,11 +4,12 @@ import { getUser } from './auth';
 import { getChats } from './chat';
 
 const initApp = async () => {
+  const router = new Router('app');
   let me = null;
   try {
     me = await getUser();
   } catch (error) {
-    Router.go(PAGES.login);
+    router.go(PAGES.login);
     return;
   }
 
@@ -16,7 +17,7 @@ const initApp = async () => {
   window.store.set({ user: me, chats });
 
   if (window.location.pathname === PAGES.login || window.location.pathname === PAGES.signin) {
-    Router.go(PAGES.messeges);
+    router.go(PAGES.messeges);
   }
 };
 

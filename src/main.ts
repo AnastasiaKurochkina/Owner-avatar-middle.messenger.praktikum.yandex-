@@ -1,4 +1,3 @@
-import Handlebars from 'handlebars';
 import * as Components from './components';
 import { registerComponent } from './core/resgiterComponent';
 import { AppState } from './type';
@@ -28,8 +27,6 @@ const initState: AppState = {
 
 window.store = new Store<AppState>(initState);
 
-Handlebars.registerPartial('Form', Components.Form);
-Handlebars.registerPartial('Tooltip', Components.Tooltip);
 registerComponent('Button', Components.Button);
 registerComponent('InputField', Components.InputField);
 registerComponent('Input', Components.Input);
@@ -50,6 +47,8 @@ registerComponent('OptionIcon', Components.OptionIcon);
 registerComponent('ChatOption', Components.ChatOption);
 registerComponent('UserAvatar', Components.UserAvatar);
 registerComponent('ChatAvatar', Components.ChatAvatar);
+registerComponent('Form', Components.Form);
+registerComponent('Tooltip', Components.Tooltip);
 
 const pages = {
   [PAGES.login]: Pages.LoginPage,
@@ -62,9 +61,10 @@ const pages = {
   [PAGES.server_error]: Pages.ServerError,
 };
 
+export const router = new Router('app');
 Object.entries(pages).forEach(([path, page]) => {
-  Router.use(path, page);
+  router.use(path, page);
 });
-Router.start();
+router.start();
 
 document.addEventListener('DOMContentLoaded', () => initApp());

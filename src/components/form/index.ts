@@ -1,1 +1,1 @@
-export { default as Form } from './form.hbs?raw';
+export { Form } from './form';

@@ -45,6 +45,7 @@ type Ref = {
 
 export class Profile extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       validate: {
@@ -55,13 +56,13 @@ export class Profile extends Block<IProfileProps, Ref> {
         password: validators.password,
       },
       goProfileEdit: () => {
-        Router.go(PAGES.profile_edit);
+        router.go(PAGES.profile_edit);
       },
       goProfilePasswordEdit: () => {
-        Router.go(PAGES.profile_password_edit);
+        router.go(PAGES.profile_password_edit);
       },
       onGoMessages: () => {
-        Router.go(PAGES.messeges);
+        router.go(PAGES.messeges);
       },
       logout: () => {
         logout();

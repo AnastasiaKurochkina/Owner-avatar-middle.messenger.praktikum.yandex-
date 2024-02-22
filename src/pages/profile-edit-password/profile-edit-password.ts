@@ -36,6 +36,7 @@ type Ref = {
 
 export class ProfileEditPassword extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       error: null,
@@ -68,17 +69,17 @@ export class ProfileEditPassword extends Block<IProfileProps, Ref> {
           oldPassword,
           newPassword,
         })
-          .then(() => Router.go(PAGES.profile))
+          .then(() => router.go(PAGES.profile))
           .catch((error) => this.refs.error.setProps({ error }));
       },
       goProfileEdit: () => {
-        Router.go(PAGES.profile_edit);
+        router.go(PAGES.profile_edit);
       },
       goProfilePasswordEdit: () => {
-        Router.go(PAGES.profile_password_edit);
+        router.go(PAGES.profile_password_edit);
       },
       onGoProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
     });
   }

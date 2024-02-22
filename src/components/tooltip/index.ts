@@ -1,1 +1,1 @@
-export { default as Tooltip } from './tooltip.hbs?raw';
+export { Tooltip } from './tooltip';

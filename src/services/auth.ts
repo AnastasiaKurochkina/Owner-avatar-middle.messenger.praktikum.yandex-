@@ -16,6 +16,7 @@ const getUser = async () => {
 
 // авторизация
 const signin = async (data: LoginRequestData) => {
+  const router = new Router('app');
   const response = await authApi.login(data);
   if (apiHasError(response)) {
     throw Error(response.reason);
@@ -24,24 +25,26 @@ const signin = async (data: LoginRequestData) => {
   const me = await getUser();
 
   window.store.set({ user: me });
-  Router.go(PAGES.messeges);
+  router.go(PAGES.messeges);
 };
 
 // регистрация
 const signup = async (data: CreateUser) => {
+  const router = new Router('app');
   const response = await authApi.create(data);
   if (apiHasError(response)) {
     throw Error(response.reason);
   }
   const me = await getUser();
   window.store.set({ user: me });
-  Router.go(PAGES.messeges);
+  router.go(PAGES.messeges);
 };
 
 const logout = async () => {
+  const router = new Router('app');
   await authApi.logout();
   window.store.set({ user: null, chats: [] });
-  Router.go(PAGES.login);
+  router.go(PAGES.login);
 };
 
 export {

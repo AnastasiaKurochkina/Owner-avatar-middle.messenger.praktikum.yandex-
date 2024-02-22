@@ -46,6 +46,7 @@ type Ref = {
 
 export class MessagesPage extends Block<IMessapePageProps, Ref> {
   constructor(props: IMessapePageProps) {
+    const router = new Router('app');
     super({
       ...props,
       validate: {
@@ -83,7 +84,7 @@ export class MessagesPage extends Block<IMessapePageProps, Ref> {
           .catch((error) => this.refs.createChat.setError(error));
       },
       goProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
       setActiveChat: (id: number, name: string, avatar: string) => {
         createWsChat(id, this.props.user);

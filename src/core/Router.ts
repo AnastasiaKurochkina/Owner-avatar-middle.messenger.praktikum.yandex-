@@ -85,4 +85,4 @@ class Router {
   }
 }
 
-export default new Router('#app');
+export default Router;

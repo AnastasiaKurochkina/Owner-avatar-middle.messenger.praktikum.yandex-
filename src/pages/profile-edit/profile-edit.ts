@@ -39,6 +39,7 @@ type Ref = {
 
 export class ProfileEdit extends Block<IProfileProps, Ref> {
   constructor(props: IProfileProps) {
+    const router = new Router('app');
     super({
       ...props,
       error: null,
@@ -91,13 +92,13 @@ export class ProfileEdit extends Block<IProfileProps, Ref> {
           display_name: displayName,
           phone,
         };
-        editProfile(userNew).then(() => Router.go(PAGES.profile));
+        editProfile(userNew).then(() => router.go(PAGES.profile));
         console.log({
           data,
         });
       },
       onGoProfile: () => {
-        Router.go(PAGES.profile);
+        router.go(PAGES.profile);
       },
     });
   }

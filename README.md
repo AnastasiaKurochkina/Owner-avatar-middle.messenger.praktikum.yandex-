@@ -35,3 +35,15 @@
 `npm run dev` - запуск проекта в режиме разработки
 
 `npm run build` - сборка проекта
+
+`npm run test` - запуск тестов
+
+`npm run lint` - запуск ESLint
+
+`npm run lint--fix` - запуск ESLint fix
+
+`npm run stylelint` - запуск stylelint
+
+`npm run stylelint--fix` -  запуск stylelint fix
+
+`npm run test-all` - запуск ESLint, stylelint и тестов

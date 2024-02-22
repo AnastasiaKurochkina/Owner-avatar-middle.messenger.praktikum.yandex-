@@ -8,7 +8,7 @@ export const createWebSocket = async (chatid: number, user: User) => {
   );
   const ping = () => socket.send(JSON.stringify({ type: 'ping' }));
 
-  let pingIntervalId = 0;
+  let pingIntervalId: NodeJS.Timeout;
 
   socket.addEventListener('open', () => {
     console.log('Соединение установлено');

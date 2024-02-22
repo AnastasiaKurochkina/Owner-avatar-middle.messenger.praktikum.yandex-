@@ -19,6 +19,7 @@ interface ILoginPageProps {
 
 export class LoginPage extends Block<ILoginPageProps, Ref> {
   constructor() {
+    const router = new Router('app');
     super({
       error: null,
       validate: {
@@ -46,14 +47,14 @@ export class LoginPage extends Block<ILoginPageProps, Ref> {
       },
       onAuth: (event: Event) => {
         event.preventDefault();
-        Router.go(PAGES.signin);
+        router.go(PAGES.signin);
       },
     });
   }
 
   protected render(): string {
     return `<div class="container">
-      {{#> Form }}
+      {{#Form }}
       <h1 class="header">Авторизация</h1>
       {{{ InputField label="Логин" name="login" type="text" errors="Неверный логин" ref="login" validate=validate.login }}}
       {{{ InputField label="Пароль" name="password" type="password" ref="password" validate=validate.password}}}
